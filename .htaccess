@@ -1,0 +1,3 @@
+RewriteEngine On
+# 01 module
+RewriteRule (.*) 01-baseLaravel/public/$1
