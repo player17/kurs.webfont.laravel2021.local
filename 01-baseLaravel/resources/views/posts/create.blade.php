@@ -8,12 +8,10 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Home page</h1>
-    <?//=$var;?>
-    {{-- route('post', ['id' => 3, 'slug' => 'test-2']) --}}
-    {{-- route('admin.post', ['id' => 3]) --}}
-
-    {{ $name }} : {{ $res }}
-
+<form action="{{ route('posts.store') }}" method="post">
+    @csrf
+    <input type="test" name="title">
+    <button type="submit">Submit</button>
+</form>
 </body>
 </html>
