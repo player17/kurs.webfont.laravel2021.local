@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -29,7 +30,9 @@ class HomeController extends Controller
         );
         */
 
-        /*DB::delete('DELETE FROM posts WHERE id = ?', [3]);*/
+        /*
+        DB::delete('DELETE FROM posts WHERE id = ?', [3]);
+        */
 
         /*DB::beginTransaction();
         try {
@@ -45,6 +48,7 @@ class HomeController extends Controller
             'SELECT * FROM `posts` WHERE `id` >= :id',
             ['id' => 2]);*/
 
+        /*
         //$data = DB::table('country')->select('Code', 'Name')->limit(10)->get();
         $data = DB::table('country')
             ->select('Code', 'Name')
@@ -70,6 +74,12 @@ class HomeController extends Controller
             ->get();
 
         dd($data);
+        */
+
+        $post = new Post();
+        $post->title = 'Статья 5';
+        //$post->content = 'Текст поста 2 ...';
+        $post->save();
 
         return view('home', ['res' => 555, 'name' => 'super']);
 

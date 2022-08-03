@@ -8,6 +8,7 @@
 
 ## Консольные команды
 * `php artisan`
+* `php artisan help make:model`
 
 ## Создание Controllers
 * https://laravel.su/docs/8.x/controllers
@@ -19,5 +20,8 @@
 * `php artisan migrate:rollback`
 * `php artisan make:migration create_posts_table`
 * `php artisan make:migration change_posts_table --table=posts`
-    * `composer require doctrine/dbal` 
+    * `composer require doctrine/dbal`
+* `php artisan migrate:reset`
 
+## Модель
+* `php artisan make:model Post -m`
