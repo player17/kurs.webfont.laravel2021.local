@@ -104,6 +104,10 @@
       <excludeFolder url="file://$MODULE_DIR$/01-baseLaravel/vendor/symfony/polyfill-intl-normalizer" />
       <excludeFolder url="file://$MODULE_DIR$/01-baseLaravel/vendor/symfony/polyfill-php73" />
       <excludeFolder url="file://$MODULE_DIR$/01-baseLaravel/vendor/symfony/polyfill-php72" />
+      <excludeFolder url="file://$MODULE_DIR$/01-baseLaravel/vendor/doctrine/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/01-baseLaravel/vendor/doctrine/deprecations" />
+      <excludeFolder url="file://$MODULE_DIR$/01-baseLaravel/vendor/doctrine/dbal" />
+      <excludeFolder url="file://$MODULE_DIR$/01-baseLaravel/vendor/doctrine/event-manager" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
