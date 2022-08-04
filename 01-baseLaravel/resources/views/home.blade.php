@@ -9,8 +9,39 @@
 @section('content')
     <section class="jumbotron text-center">
         <div class="container">
+            @isset($h1)
             {!! mb_strtoupper($h1); !!}
+            @endisset
             @{{ varTitle }}
+            <br/>
+
+            @if(count($data1) > 20)
+                Count > 20
+            @elseif(count($data1) < 20)
+                Count < 20
+            @else
+                Count = 20
+            @endif
+
+            @production
+                <h2>Production</h2>
+            @endproduction
+
+            @env('local')
+                <h2>Local</h2>
+            @endenv
+
+            @for($i = 0; $i < count($data1); $i++)
+                {{ $data1[$i] }}
+            @endfor
+
+            @foreach($data2 as $k => $v)
+                {{ $k }} => {{ $v }}
+            @endforeach
+
+            @php
+                var_dump($data2);
+            @endphp
         </div>
     </section>
 

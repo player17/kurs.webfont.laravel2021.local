@@ -15,11 +15,18 @@ class HomeController extends Controller
     {
         $title = 'Главная страница';
         $h1 = '<h1>Home page</h1>';
-        return view('home', compact('title','h1'));
+        $data1 = range(1, 20);
+        $data2 = [
+            'title' => 'Title',
+            'content' => 'Content',
+            'keys' => 'Keywords',
+        ];
+        return view('home', compact('title', 'h1', 'data1', 'data2'));
 
     }
 
-    public function test() {
+    public function test()
+    {
         return __METHOD__;
     }
 }
