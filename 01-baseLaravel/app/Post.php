@@ -26,7 +26,11 @@ class Post extends Model
 
     public function rubric()
     {
-        return $this->belongsTo('App\Rubric','rubric_my_id', 'id');
+        return $this->belongsTo('App\Rubric', 'rubric_my_id', 'id');
     }
 
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 }

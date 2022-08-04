@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Country;
 use App\City;
 use App\Post;
+use App\Tag;
 use App\Rubric;
 use Illuminate\Support\Facades\DB;
 
@@ -140,7 +141,44 @@ class HomeController extends Controller
         dump($rubric->title, $rubric->posts);
         */
 
+        /*
+        $post = Rubric::find(3)->posts;
+        //$post = Rubric::find(3)->posts()->select('title')->where('title', 'LIKE', '%3')->get();
+        dump($post);
+        */
 
+        /*
+        // Ленивая загрузка (на каждый объект цикла, свой запрос)
+        $posts = Post::where('id', '>', 1)->get();
+        foreach ($posts as $post) {
+            //dd($post->rubric); // Коллекция
+            //dd($post->rubric()); // Объект связи belongsTo
+            dump($post->title, $post->rubric->title);
+        }
+        */
+
+        /*
+        // Жадная загрузка (один запрос для всех объектов цикла)
+        $posts = Post::with('rubric')->where('id', '>', 1)->get();
+        foreach ($posts as $post) {
+            dump($post->title, $post->rubric->title);
+        }
+        */
+
+        /*
+        // Многие ко многим
+        $post = Post::find(1);
+        dump($post->title);
+        foreach ($post->tags as $tag) {
+            dump($tag->Title);
+        }
+
+        $tag = Tag::find(3);
+        dump($tag->title);
+        foreach ($tag->posts as $post) {
+            dump($post->title);
+        }
+        */
 
 
         return view('home', ['res' => 555, 'name' => 'super']);
