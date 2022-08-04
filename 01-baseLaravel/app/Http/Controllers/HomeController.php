@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Country;
+use App\City;
 use App\Post;
 use Illuminate\Support\Facades\DB;
 
@@ -76,10 +78,55 @@ class HomeController extends Controller
         dd($data);
         */
 
+        /*
         $post = new Post();
         $post->title = 'Статья 5';
-        //$post->content = 'Текст поста 2 ...';
+        $post->content = 'Текст поста 2 ...';
         $post->save();
+        */
+
+        /*
+        //$data = Country::all();
+        //$data = Country::limit(5)->get();
+        //$data = Country::query()->limit(5)->get();
+        //$data = Country::limit(5)->get();
+        //$data = Country::where('Code', '<', 'ALB')->offset(1)->limit(2)->get();
+        //$data = City::find(5);
+        //$data = Country::find('RUS');
+        //dd($data);
+        */
+
+        /*
+        $post = new Post();
+        $post->title = 'Post 6';
+        $post->content = 'Text post 6';
+        $post->save();
+        */
+
+        /*
+        //Post::query()->create(['title' => 'Post 7', 'content' => 'Text posts 7 ....']);
+        $post = new Post();
+        $post->fill(['title' => 'Post 8', 'content' => 'Text posts 8 ....']);
+        $post->save();
+        */
+
+        /*
+        $post = Post::find(7);
+        $post->content = 'Txt 777 ....';
+        $post->save();
+        */
+
+        /*
+        Post::where('id','>','3')
+            ->update(['updated_at' => NOW()]);
+        */
+
+
+        //$post = Post::find(6);
+        //$post->delete();
+        Post::destroy(4);
+
+
 
         return view('home', ['res' => 555, 'name' => 'super']);
 

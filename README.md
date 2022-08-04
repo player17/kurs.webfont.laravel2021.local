@@ -25,3 +25,4 @@
 
 ## Модель
 * `php artisan make:model Post -m`
+* `php artisan make:model City`

@@ -2,8 +2,14 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Post
+ * @package App
+ * @mixin Builder
+ */
 class Post extends Model
 {
     protected $table = 'posts';
@@ -14,5 +20,8 @@ class Post extends Model
     protected $attributes = [
         'content' => 'Lorem ipsum...'
     ];
+
+    protected $fillable = ['title'];
+    protected $guarded = [];
 
 }
