@@ -1,5 +1,7 @@
 @extends('layouts.layout')
 
+@section('title')@parent:: {{ $title }} @endsection
+
 @section('header')
     @parent
 @endsection
@@ -7,7 +9,8 @@
 @section('content')
     <section class="jumbotron text-center">
         <div class="container">
-            <h1>Home page</h1>
+            {!! mb_strtoupper($h1); !!}
+            @{{ varTitle }}
         </div>
     </section>
 

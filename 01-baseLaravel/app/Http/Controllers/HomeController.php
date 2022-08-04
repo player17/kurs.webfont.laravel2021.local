@@ -13,8 +13,9 @@ class HomeController extends Controller
 {
     public function index()
     {
-
-        return view('home', []);
+        $title = 'Главная страница';
+        $h1 = '<h1>Home page</h1>';
+        return view('home', compact('title','h1'));
 
     }
 
