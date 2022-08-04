@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Country;
 use App\City;
 use App\Post;
+use App\Rubric;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -121,10 +122,24 @@ class HomeController extends Controller
             ->update(['updated_at' => NOW()]);
         */
 
-
+        /*
         //$post = Post::find(6);
         //$post->delete();
         Post::destroy(4);
+        */
+
+        /*
+        $post = Post::find(2);
+        dump($post->title, $post->rubric->title);
+        */
+
+        /*
+        $rubric = Rubric::find(1);
+        dump($rubric->title, $rubric->post->title);
+        $rubric = Rubric::find(3);
+        dump($rubric->title, $rubric->posts);
+        */
+
 
 
 

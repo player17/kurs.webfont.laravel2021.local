@@ -24,4 +24,9 @@ class Post extends Model
     protected $fillable = ['title'];
     protected $guarded = [];
 
+    public function rubric()
+    {
+        return $this->belongsTo('App\Rubric','rubric_my_id', 'id');
+    }
+
 }
