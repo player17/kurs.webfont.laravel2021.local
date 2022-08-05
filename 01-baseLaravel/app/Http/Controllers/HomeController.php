@@ -7,6 +7,7 @@ use App\City;
 use App\Post;
 use App\Tag;
 use App\Rubric;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -27,6 +28,20 @@ class HomeController extends Controller
 
         return view('home', compact('title', 'h1', 'data1', 'data2', 'posts'));
 
+    }
+
+    public function create()
+    {
+        $title = 'Create posts';
+        $rubrics = Rubric::pluck('title', 'id')->all();
+        return view('create', compact('title', 'rubrics'));
+    }
+
+    public function store(Request $request)
+    {
+        //$request->input('title');
+        Post::create($request->all());
+        return redirect()->route('home');
     }
 
     public function test()

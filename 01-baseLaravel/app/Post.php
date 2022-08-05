@@ -22,7 +22,7 @@ class Post extends Model
         'content' => 'Lorem ipsum...'
     ];
 
-    protected $fillable = ['title'];
+    protected $fillable = ['title', 'content', 'rubric_my_id'];
     protected $guarded = [];
 
     public function rubric()

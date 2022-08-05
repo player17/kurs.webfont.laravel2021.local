@@ -27,5 +27,5 @@
 * `php artisan make:model Post -m`
 * `php artisan make:model City`
 
-## Стороние библиотеки
+## Сторонние библиотеки
 
