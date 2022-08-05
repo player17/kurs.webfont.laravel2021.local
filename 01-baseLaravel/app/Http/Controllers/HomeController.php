@@ -21,7 +21,11 @@ class HomeController extends Controller
             'content' => 'Content',
             'keys' => 'Keywords',
         ];
-        return view('home', compact('title', 'h1', 'data1', 'data2'));
+
+        //$posts = Post::all();
+        $posts = Post::orderBy('id', 'desc')->get();
+
+        return view('home', compact('title', 'h1', 'data1', 'data2', 'posts'));
 
     }
 
