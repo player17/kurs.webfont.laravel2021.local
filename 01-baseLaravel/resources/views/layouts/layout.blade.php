@@ -52,7 +52,7 @@
 
 <main role="main">
 
-    @include('layouts.errors')
+    @include('layouts.alerts')
     @yield('content')
 
 </main>
