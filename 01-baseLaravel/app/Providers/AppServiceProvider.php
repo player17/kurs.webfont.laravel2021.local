@@ -26,7 +26,9 @@ class AppServiceProvider extends ServiceProvider
     {
         DB::listen(function ($query) {
             //dump($query->sql, $query->bindings);
-            dump($query->sql);
+            echo '<div style="background: #171719; color: #2cad2c; padding: 4px 6px; font-size: 12px;">';
+            print_r($query->sql);
+            echo '</div>';
         });
     }
 }

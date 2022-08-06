@@ -8,6 +8,8 @@ use App\Post;
 use App\Tag;
 use App\Rubric;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
@@ -16,11 +18,11 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         /*
-dump(config('app.timezone'));
-dump(config('database.connections.mysql'));
-dump($_ENV);
-return view('home', ['res' => 5, 'name' => 'super']);
-*/
+        dump(config('app.timezone'));
+        dump(config('database.connections.mysql'));
+        dump($_ENV);
+        return view('home', ['res' => 5, 'name' => 'super']);
+        */
 
         /*$query = DB::insert(
             'INSERT INTO posts(`title`,`content`, `created_at`)
@@ -182,6 +184,50 @@ return view('home', ['res' => 5, 'name' => 'super']);
         }
         */
 
+        // Сессии
+        $request->session()->put('test', 'test val');
+        session(['cart' => [
+            ['pord_id' => 12335, 'count' => 1],
+            ['pord_id' => 777, 'count' => 2],
+        ]]);
+        session()->push('cart', ['pord_id' => 333, 'count' => 3]);
+        //dump($request->session()->all());
+        //dump($request->session()->get('cart')[2]);
+        //dump(session('test'));
+        $testSessionVal = session()->pull('test'); // test val
+        //session()->forget('test');
+        //dump($testSessionVal);
+        //dump(session('test'));
+        //session()->flush(); // полная очистка
+        //dump(session()->all());
+
+        // Куки // Cookie // dump блокирует создание Cookie, т.к. Cookie отправляются вместе с заголовком, до вывода контента
+        // а dump до создания Cookie отправляет заголовки
+        Cookie::queue('test', 'Test val 0000', 1);
+        Cookie::queue(Cookie::forget('test'));
+        Cookie::queue('test1', 'Test val 111', 1);
+        //dump(Cookie::get('test'));
+        //dump($request->cookie('test'));
+        //print_r($request->cookie('test'));
+        //print_r($request->cookie('test1'));
+
+        // Кеширование
+        // /storage/framework/cache // Кеш данных
+        // /storage/framework/views // Кеш страниц
+        Cache::put('keyCache', 'cache val', 300);
+        //$varCache = Cache::pull('keyCache');
+        Cache::forget('keyCache');
+        print_r(Cache::get('keyCache'));
+        Cache::forever('keyForeverCache', 'cache val');
+        if(Cache::has('posts')) {
+            $posts = Cache::get('posts');
+        } else {
+            $posts = Post::orderBy('id', 'desc')->get();
+            Cache::put('posts',$posts, 3600);
+        }
+        Cache::flush();
+
+
         $title = 'Главная страница';
         $h1 = '<h1>Home page</h1>';
         $data1 = range(1, 20);
@@ -192,24 +238,7 @@ return view('home', ['res' => 5, 'name' => 'super']);
         ];
 
         //$posts = Post::all();
-        $posts = Post::orderBy('id', 'desc')->get();
-
-        // Сессии
-        $request->session()->put('test', 'test val');
-        session(['cart' => [
-            ['pord_id' => 12335, 'count' => 1],
-            ['pord_id' => 777, 'count' => 2],
-        ]]);
-        session()->push('cart', ['pord_id' => 333, 'count' => 3]);
-        dump($request->session()->all());
-        dump($request->session()->get('cart')[2]);
-        dump(session('test'));
-        $testSessionVal = session()->pull('test'); // test val
-        //session()->forget('test');
-        dump(session('test'));
-        //session()->flush(); // полная очистка
-        //dump(session()->all());
-
+        //$posts = Post::orderBy('id', 'desc')->get();
 
         return view('home', compact('title', 'h1', 'data1', 'data2', 'posts'));
 
