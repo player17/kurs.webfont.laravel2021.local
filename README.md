@@ -27,5 +27,13 @@
 * `php artisan make:model Post -m`
 * `php artisan make:model City`
 
+## Пакетный менеджер npm
+* `npm install`
+* `npm install --legacy-peer-deps`
+* `npm run dev`
+* `npm run watch`
+  * `npm install browser-sync browser-sync-webpack-plugin@2.0.1 --save-dev --production=false --legacy-peer-deps` Конфликт зависимостей
+
 ## Сторонние библиотеки
+
 

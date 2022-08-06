@@ -11,5 +11,18 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+//mix.js('resources/js/app.js', 'public/js').sass('resources/sass/app.scss', 'public/css');
+
+mix.styles([
+    'resources/front/css/bootstrap.css',
+    'resources/front/css/main.css',
+], 'public/css/styles.css');
+
+mix.scripts([
+    'resources/front/js/jquery-3.5.1.slim.js',
+    'resources/front/js/bootstrap.js',
+], 'public/js/scripts.js');
+
+mix.copyDirectory('resources/front/img', 'public/img');
+
+mix.browserSync('kurs.webfont.laravel2021.local');

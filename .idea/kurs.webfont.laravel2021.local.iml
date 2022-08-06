@@ -108,6 +108,10 @@
       <excludeFolder url="file://$MODULE_DIR$/01-baseLaravel/vendor/doctrine/deprecations" />
       <excludeFolder url="file://$MODULE_DIR$/01-baseLaravel/vendor/doctrine/dbal" />
       <excludeFolder url="file://$MODULE_DIR$/01-baseLaravel/vendor/doctrine/event-manager" />
+      <excludeFolder url="file://$MODULE_DIR$/01-baseLaravel/vendor" />
+      <excludeFolder url="file://$MODULE_DIR$/01-baseLaravel/public/css" />
+      <excludeFolder url="file://$MODULE_DIR$/01-baseLaravel/public/img" />
+      <excludeFolder url="file://$MODULE_DIR$/01-baseLaravel/public/js" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -73,3 +73,7 @@
         </div>
     </div>
 @endsection
+
+@section('scripts')
+    <script>console.log('Home page')</script>
+@endsection

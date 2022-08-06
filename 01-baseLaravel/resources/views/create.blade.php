@@ -43,3 +43,7 @@
     </div>
 
 @endsection
+
+@section('scripts')
+    <script>console.log('Create post page')</script>
+@endsection
