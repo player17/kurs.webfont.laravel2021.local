@@ -1,3 +1,6 @@
+## brif
+* 01-baseLaravel php 7.4 + laravel 7
+
 ## links doscs
 * https://laravel.com/
 * https://laravel.su/
