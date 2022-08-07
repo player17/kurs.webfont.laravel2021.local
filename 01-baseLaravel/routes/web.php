@@ -19,6 +19,8 @@ Route::post('/', 'HomeController@store')->name('posts.store');
 
 Route::get('/page/about', 'PageController@show')->name('page.about');
 
+Route::get('/send', 'ContactController@send')->name('testmail');
+
 
 // 404 redirect
 Route::fallback(function () {

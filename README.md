@@ -34,6 +34,9 @@
 * `npm run watch`
   * `npm install browser-sync browser-sync-webpack-plugin@2.0.1 --save-dev --production=false --legacy-peer-deps` Конфликт зависимостей
 
+## Настройка Mail
+* `php artisan make:mail TestMail`
+
 ## Сторонние библиотеки
 
 
