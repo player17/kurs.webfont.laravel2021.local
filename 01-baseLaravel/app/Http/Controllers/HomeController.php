@@ -205,11 +205,13 @@ class HomeController extends Controller
         // а dump до создания Cookie отправляет заголовки
         Cookie::queue('test', 'Test val 0000', 1);
         Cookie::queue(Cookie::forget('test'));
-        Cookie::queue('test1', 'Test val 111', 1);
+        Cookie::queue('test1', 'Test val 1111', 1);
         //dump(Cookie::get('test'));
         //dump($request->cookie('test'));
         //print_r($request->cookie('test'));
-        //print_r($request->cookie('test1'));
+        echo '<div style="background: #171719; color: #2cad2c; padding: 4px 6px; font-size: 12px;">';
+        echo 'Cookie: ' . $request->cookie('test1');
+        echo '</div>';
 
         // Кеширование
         // /storage/framework/cache // Кеш данных

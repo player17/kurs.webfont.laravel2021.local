@@ -41,6 +41,10 @@
 
             @php
                 var_dump($data2);
+
+                echo '<br><b>Авторизация пользователя: ';
+                var_dump(\Illuminate\Support\Facades\Auth::check());
+                echo '</b><br>';
             @endphp
         </div>
     </section>

@@ -24,6 +24,7 @@
                         <h4 class="text-white">Contact</h4>
                         <ul class="list-unstyled">
                             <li><a href="{{ route('home') }}" class="text-white">Home</a></li>
+                            <li><a href="{{ route('register.create') }}" class="text-white">Register</a></li>
                             <li><a href="{{ route('posts.create') }}" class="text-white">Create</a></li>
                             <li><a href="{{ route('testmail') }}" class="text-white">Test mail</a></li>
                             <li><a href="{{ route('page.about') }}" class="text-white">About</a></li>
