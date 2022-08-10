@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<h1>{{ $exception->getMessage() }}</h1>
+<h1>{{-- $exception->getMessage() --}}404 - Page not found</h1>
 
 </body>
 </html>

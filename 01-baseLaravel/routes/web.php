@@ -23,15 +23,20 @@ Route::get('/page/about', 'PageController@show')->name('page.about');
 Route::match(['get', 'post'], '/send', 'ContactController@send')->name('testmail');
 
 // Регистрация/Авторизация
-Route::get('/register', 'UserController@create')->name('register.create');
-Route::post('/register', 'UserController@store')->name('register.store');
+Route::group(['middleware' => 'guest'], function () {
+    Route::get('/register', 'UserController@create')->name('register.create');
+    Route::post('/register', 'UserController@store')->name('register.store');
+    Route::get('/login', 'UserController@loginForm')->name('login.create');
+    Route::post('/login', 'UserController@login')->name('login');
+});
 
-Route::get('/login', 'UserController@loginForm')->name('login.create');
-Route::post('/login', 'UserController@login')->name('login');
-Route::get('/logout', 'UserController@logout')->name('logout');
+Route::get('/logout', 'UserController@logout')->middleware('auth')->name('logout');
 
 // Админка
-Route::get('/admin', 'Admin\MainController@index');
+//Route::get('/admin', 'Admin\MainController@index')->middleware('admin')->name('admin');
+Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
+    Route::get('/', 'MainController@index')->name('admin');
+});
 
 
 

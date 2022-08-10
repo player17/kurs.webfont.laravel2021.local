@@ -30,6 +30,7 @@
                             <li><a href="{{ route('register.create') }}" class="text-white">Register</a></li>
                             @endif
                             @auth
+                                <li><a href="{{ route('admin') }}" class="text-white">Admin Panel</a></li>
                                 <li><a href="{{ route('posts.create') }}" class="text-white">Create</a></li>
                             @endauth
                             <li><a href="{{ route('testmail') }}" class="text-white">Test mail</a></li>

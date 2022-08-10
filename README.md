@@ -10,7 +10,7 @@
 * https://www.apachefriends.org/ru/index.html
 
 ## Консольные команды
-* `php artisan`
+* `php artisan list`
 * `php artisan help make:model`
 
 ## Создание Controllers
@@ -19,7 +19,7 @@
 
 ## Миграции
 * https://laravel.su/docs/8.x/migrations
-* `php artisan migrate`
+* `php artisan migrate`  // Выполнить не активированные миграции
 * `php artisan migrate:rollback`
 * `php artisan make:migration create_posts_table`
 * `php artisan make:migration change_posts_table --table=posts`
@@ -39,6 +39,9 @@
 
 ## Настройка Mail
 * `php artisan make:mail TestMail`
+
+## Генерация посредника доступа Middleware
+* `php artisan make:middleware AdminMiddleware`
 
 ## Сторонние библиотеки
 
