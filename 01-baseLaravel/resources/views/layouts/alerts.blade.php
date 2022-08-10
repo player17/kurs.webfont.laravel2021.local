@@ -20,3 +20,11 @@
     </div>
 @endif
 
+@if(session('danger'))
+    <div class="container">
+        <div class="alert alert-danger mt-5">
+            {{ session('danger') }}
+        </div>
+    </div>
+@endif
+

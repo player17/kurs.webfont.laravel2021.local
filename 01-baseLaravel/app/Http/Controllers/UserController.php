@@ -34,4 +34,36 @@ class UserController extends Controller
         //return redirect()->home();
         return redirect()->route('home');
     }
+
+    public function loginForm()
+    {
+        return view('user.login');
+    }
+
+    public function login(Request $request)
+    {
+        //dd($request->all());
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        if(Auth::attempt([
+            'email' => $request->input('email'),
+            'password' => $request->password,
+        ])) {
+            session()->flash('success', 'Successful auth');
+            return redirect()->home();
+        }
+
+        //session()->flash('danger', 'Error auth');
+        //return view('user.login');
+        return redirect()->back()->with('danger', 'Incorrect login or password');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('home');
+    }
 }
