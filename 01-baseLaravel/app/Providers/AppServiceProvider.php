@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Rubric;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 
@@ -29,6 +30,10 @@ class AppServiceProvider extends ServiceProvider
             echo '<div style="background: #171719; color: #2cad2c; padding: 4px 6px; font-size: 12px;">';
             print_r($query->sql);
             echo '</div>';
+        });
+
+        view()->composer('layouts.footer', function($view) {
+           $view->with('rubrics', Rubric::all());
         });
     }
 }
