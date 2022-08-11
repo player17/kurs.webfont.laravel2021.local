@@ -227,7 +227,7 @@ class HomeController extends Controller
             // Пагинация
             //$posts = Post::orderBy('id', 'desc')->get();
             //$posts = Post::orderBy('id', 'desc')->simplePaginate();
-            $posts = Post::orderBy('id', 'desc')->paginate(9);
+            $posts = Post::orderBy('created_at', 'desc')->paginate(9);
             Cache::put('posts',$posts, 3600);
         }
         Cache::flush(); // очистил весь кеш

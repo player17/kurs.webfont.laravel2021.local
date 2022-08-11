@@ -1,5 +1,6 @@
 ## brif
 * 01-baseLaravel php 7.4 + laravel 7
+  * `composer install && update`
 
 ## links doscs
 * https://laravel.com/
@@ -32,7 +33,7 @@
 ## Символические ссылки для картинок из /public/storage/... в  /storage/app/public/...
 * `php artisan storage:link`
 
-## Генерация прочих сущностей
+## Генерация сущностей
 * `php artisan make:controller PhotoController --resource` // Генерация контролера
 * `php artisan make:model Post -m` // Генерация модели
 * `php artisan vendor:publish --tag=laravel-pagination` // стоковые шаблоны оформления пагинации
