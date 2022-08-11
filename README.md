@@ -43,6 +43,9 @@
 ## Генерация посредника доступа Middleware
 * `php artisan make:middleware AdminMiddleware`
 
+## Символические ссылки для картинок из /public/storage/... в  /storage/app/public/...
+* `php artisan storage:link`
+
 ## Сторонние библиотеки
 
 

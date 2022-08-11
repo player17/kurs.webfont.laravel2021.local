@@ -38,7 +38,14 @@
                                 <li><a href="{{ route('page.about') }}" class="text-white">About</a></li>
                             @endguest
                             @if(Auth::check())
-                                <li><a href="{{ route('logout') }}" class="text-white">Logout "{{ auth()->user()->name }}"</a></li>
+                                <li>
+                                    <a href="{{ route('logout') }}" class="text-white">
+                                        Logout "{{ auth()->user()->name }}"
+                                        @if(auth()->user()->avatar)
+                                            <img style="margin-left:6px; width: auto; height: 18px; border-radius: 10px" src="{{ asset('storage/' . auth()->user()->avatar) }}" alt="">
+                                        @endif
+                                    </a>
+                                </li>
                             @else
                                 <li><a href="{{ route('login.create') }}" class="text-white">Login</a></li>
                             @endif
