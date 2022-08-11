@@ -13,10 +13,6 @@
 * `php artisan list`
 * `php artisan help make:model`
 
-## Создание Controllers
-* https://laravel.su/docs/8.x/controllers
-* `php artisan make:controller PhotoController --resource`
-
 ## Миграции
 * https://laravel.su/docs/8.x/migrations
 * `php artisan migrate`  // Выполнить не активированные миграции
@@ -26,10 +22,6 @@
     * `composer require doctrine/dbal`
 * `php artisan migrate:reset`
 
-## Модель
-* `php artisan make:model Post -m`
-* `php artisan make:model City`
-
 ## Пакетный менеджер npm
 * `npm install`
 * `npm install --legacy-peer-deps`
@@ -37,17 +29,20 @@
 * `npm run watch`
   * `npm install browser-sync browser-sync-webpack-plugin@2.0.1 --save-dev --production=false --legacy-peer-deps` Конфликт зависимостей
 
-## Настройка Mail
-* `php artisan make:mail TestMail`
-
-## Генерация посредника доступа Middleware
-* `php artisan make:middleware AdminMiddleware`
-
 ## Символические ссылки для картинок из /public/storage/... в  /storage/app/public/...
 * `php artisan storage:link`
 
-## Генерация стоковых шаблонов оформления
-* `php artisan vendor:publish --tag=laravel-pagination`
+## Генерация прочих сущностей
+* `php artisan make:controller PhotoController --resource` // Генерация контролера
+* `php artisan make:model Post -m` // Генерация модели
+* `php artisan vendor:publish --tag=laravel-pagination` // стоковые шаблоны оформления пагинации
+* `php artisan make:middleware AdminMiddleware` // генерация посредника доступа Middleware
+* `php artisan make:mail TestMail` // настройка Mail
+* `php artisan make:seeder PostsSeeder` // генерация посева для фейковых данных в БД
+  * /database/seeds/PostsSeeder.php
+  * `php artisan make:factory PostFactory -m Post` // генерация фабрики с указанием модели
+    * /database/factories/PostFactory.php
+  * `php artisan db:seed` // Запуск всех сидоров из /database/seeds/DatabaseSeeder.php
 
 ## Сторонние библиотеки
 
