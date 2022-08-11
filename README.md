@@ -46,6 +46,9 @@
 ## Символические ссылки для картинок из /public/storage/... в  /storage/app/public/...
 * `php artisan storage:link`
 
+## Генерация стоковых шаблонов оформления
+* `php artisan vendor:publish --tag=laravel-pagination`
+
 ## Сторонние библиотеки
 
 

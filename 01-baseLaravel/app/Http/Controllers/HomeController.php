@@ -218,16 +218,19 @@ class HomeController extends Controller
         // /storage/framework/views // Кеш страниц
         Cache::put('keyCache', 'cache val', 300);
         //$varCache = Cache::pull('keyCache');
-        Cache::forget('keyCache');
+        Cache::forget('keyCache'); // очистил кеш
         print_r(Cache::get('keyCache'));
-        Cache::forever('keyForeverCache', 'cache val');
+        Cache::forever('keyForeverCache', 'cache val'); // кеш на всегда
         if(Cache::has('posts')) {
             $posts = Cache::get('posts');
         } else {
-            $posts = Post::orderBy('id', 'desc')->get();
+            // Пагинация
+            //$posts = Post::orderBy('id', 'desc')->get();
+            //$posts = Post::orderBy('id', 'desc')->simplePaginate();
+            $posts = Post::orderBy('id', 'desc')->paginate(3);
             Cache::put('posts',$posts, 3600);
         }
-        Cache::flush();
+        Cache::flush(); // очистил весь кеш
 
 
         $title = 'Главная страница';

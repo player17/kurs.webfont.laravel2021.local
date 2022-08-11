@@ -73,6 +73,12 @@
                     </div>
                 </div>
                 @endforeach
+
+                <div class="col-md-12">
+                    <h4>Пагинация</h4>
+                    <!-- /?test=555 -->
+                    {{ $posts->onEachSide(1)->appends(['test' => request()->test])->fragment('foo')->links('vendor.pagination.my-pagination') }}
+                </div>
             </div>
         </div>
     </div>
