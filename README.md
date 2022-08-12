@@ -1,6 +1,7 @@
 ## brif
 * 01-baseLaravel php 7.4 + laravel 7
   * `composer install && update`
+* `composer create-project --prefer-dist laravel/laravel:^7.0 dir-poject`
 
 ## links doscs
 * https://laravel.com/
