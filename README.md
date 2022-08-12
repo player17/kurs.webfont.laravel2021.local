@@ -49,5 +49,6 @@
 ## Сторонние библиотеки
 * `composer require barryvdh/laravel-debugbar --dev`
   * `php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"`
+* `composer require cviebrock/eloquent-sluggable:^7.0`
 
 
