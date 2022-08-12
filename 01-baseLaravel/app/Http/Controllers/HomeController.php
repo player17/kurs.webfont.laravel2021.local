@@ -7,10 +7,12 @@ use App\City;
 use App\Post;
 use App\Tag;
 use App\Rubric;
+use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
@@ -184,6 +186,14 @@ class HomeController extends Controller
         }
         */
 
+        Log::warning('Test Log');
+        //\Debugbar::warning('Watch out...');
+        //Debugbar::info($request);
+        Debugbar::info('Title info');
+        Debugbar::error('Error!');
+        Debugbar::warning('Watch out…');
+        Debugbar::addMessage('Another message', 'mylabel');
+
         // Сессии
         $request->session()->put('test', 'test val');
         session(['cart' => [
@@ -221,6 +231,11 @@ class HomeController extends Controller
         Cache::forget('keyCache'); // очистил кеш
         print_r(Cache::get('keyCache'));
         Cache::forever('keyForeverCache', 'cache val'); // кеш на всегда
+
+
+        Debugbar::addMeasure('now', LARAVEL_START, microtime(true));
+        Debugbar::startMeasure('get_posts','Time for get posts');
+
         if(Cache::has('posts')) {
             $posts = Cache::get('posts');
         } else {
@@ -231,6 +246,11 @@ class HomeController extends Controller
             Cache::put('posts',$posts, 3600);
         }
         Cache::flush(); // очистил весь кеш
+
+        Debugbar::stopMeasure('get_posts');
+        Debugbar::measure('My long operation', function() {
+            echo 'My long operation txt';
+        });
 
 
         $title = 'Главная страница';

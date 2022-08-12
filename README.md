@@ -46,5 +46,7 @@
   * `php artisan db:seed` // Запуск всех сидоров из /database/seeds/DatabaseSeeder.php
 
 ## Сторонние библиотеки
+* `composer require barryvdh/laravel-debugbar --dev`
+  * `php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"`
 
 
