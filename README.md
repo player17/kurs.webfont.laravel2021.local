@@ -36,7 +36,7 @@
 
 ## Генерация сущностей
 * `php artisan make:controller PhotoController --resource` // Генерация контролера
-* `php artisan make:model Post -m` // Генерация модели
+* `php artisan make:model Post -m` // Генерация модели и миграции к ней
 * `php artisan vendor:publish --tag=laravel-pagination` // стоковые шаблоны оформления пагинации
 * `php artisan make:middleware AdminMiddleware` // генерация посредника доступа Middleware
 * `php artisan make:mail TestMail` // настройка Mail
