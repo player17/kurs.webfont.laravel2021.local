@@ -9,6 +9,11 @@ class Tag extends Model
 {
     use Sluggable;
 
+    // разрешенные поля для массового заполнения в БД
+    protected $fillable = [
+        'title'
+    ];
+
     /**
      * Связь многие ко многим
      * $tag->posts

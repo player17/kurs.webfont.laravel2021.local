@@ -22,4 +22,5 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
     Route::get('/', 'MainController@index')->name('admin.index');
     // https://laravel.com/docs/9.x/controllers#actions-handled-by-resource-controller
     Route::resource('/categories', 'CategoryController');
+    Route::resource('/tags', 'TagController');
 });
