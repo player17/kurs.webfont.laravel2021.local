@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Категории</h1>
+                    <h1>Посты</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -25,38 +25,44 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Список тегов</h3>
+                            <h3 class="card-title">Список постов</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <a href="{{ route('tags.create') }}" class="btn btn-primary mb-3">Добавить
-                                тег</a>
-                            @if (count($tags))
+                            <a href="{{ route('posts.create') }}" class="btn btn-primary mb-3">Добавить
+                                пост</a>
+                            @if (count($posts))
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-hover text-nowrap">
                                         <thead>
                                         <tr>
                                             <th style="width: 30px">#</th>
                                             <th>Наименование</th>
-                                            <th>Slug</th>
+                                            <th>Категория</th>
+                                            <th>Теги</th>
+                                            <th>Дата</th>
                                             <th>Actions</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($tags as $tag)
+                                        @foreach($posts as $post)
                                             <tr>
-                                                <td>{{ $tag->id }}</td>
-                                                <td>{{ $tag->title }}</td>
-                                                <td>{{ $tag->slug }}</td>
+                                                <td>{{ $post->id }}</td>
+                                                <td>{{ $post->title }}</td>
+                                                <!-- /app/Post->category() Один ко одному belongsTo -->
+                                                <td>{{ $post->category->title }}</td>
+                                                <!-- /app/Post->category() Многие ко многим belongsToMany -->
+                                                <td>{{ $post->tags }}</td>
+                                                <td>{{ $post->created_at }}</td>
                                                 <td>
                                                     <!-- php artisan route:list --path=admin -->
-                                                    <a href="{{ route('tags.edit', ['tag' => $tag->id]) }}"
+                                                    <a href="{{ route('posts.edit', ['post' => $post->id]) }}"
                                                        class="btn btn-info btn-sm float-left mr-1">
                                                         <i class="fas fa-pencil-alt"></i>
                                                     </a>
 
                                                     <form
-                                                        action="{{ route('tags.destroy', ['tag' => $tag->id]) }}"
+                                                        action="{{ route('posts.destroy', ['post' => $post->id]) }}"
                                                         method="post" class="float-left">
                                                         @csrf
                                                         @method('DELETE')
@@ -73,20 +79,13 @@
                                     </table>
                                 </div>
                             @else
-                                <p>Тегов пока нет...</p>
+                                <p>Постов пока нет...</p>
                             @endif
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer clearfix">
-                            @if ($tags->count())
-                                {{ $tags->links() }}
-                                {{--<ul class="pagination pagination-sm m-0 float-right">
-                                    <li class="page-item"><a class="page-link" href="#">«</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">»</a></li>
-                                </ul>--}}
+                            @if ($posts->count())
+                                {{ $posts->links() }}
                             @endif
                         </div>
                     </div>

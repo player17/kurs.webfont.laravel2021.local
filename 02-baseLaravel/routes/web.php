@@ -23,4 +23,5 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
     // https://laravel.com/docs/9.x/controllers#actions-handled-by-resource-controller
     Route::resource('/categories', 'CategoryController');
     Route::resource('/tags', 'TagController');
+    Route::resource('/posts', 'PostController');
 });
