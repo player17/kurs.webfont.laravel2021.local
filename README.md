@@ -46,6 +46,7 @@
   * `php artisan make:factory PostFactory -m Post` // генерация фабрики с указанием модели
     * /database/factories/PostFactory.php
   * `php artisan db:seed` // Запуск всех сидоров из /database/seeds/DatabaseSeeder.php
+* `php artisan make:request StoreCategory` // Генерация контроллера под валидацию /app/Http/Requests/StoreCategory.php
 
 ## Сторонние библиотеки
 * `composer require barryvdh/laravel-debugbar --dev`

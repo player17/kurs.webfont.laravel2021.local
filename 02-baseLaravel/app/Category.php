@@ -9,6 +9,10 @@ class Category extends Model
 {
     use Sluggable;
 
+    protected $fillable = [
+        'title'
+    ];
+
     /**
      * Связь один ко многим, Категория к постам
      * $category->posts
