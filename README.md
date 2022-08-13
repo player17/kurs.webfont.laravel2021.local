@@ -14,6 +14,7 @@
 ## Консольные команды
 * `php artisan list`
 * `php artisan help make:model`
+* `php artisan route:list --path=admin` // Список всех существующих маршрутов // --path фильтр по URL
 
 ## Миграции
 * https://laravel.su/docs/8.x/migrations
@@ -35,7 +36,7 @@
 * `php artisan storage:link`
 
 ## Генерация сущностей
-* `php artisan make:controller PhotoController --resource` // Генерация контролера
+* `php artisan make:controller PhotoController --resource` // Генерация контролера // -r генерация CRUD
 * `php artisan make:model Post -m` // Генерация модели и миграции к ней
 * `php artisan vendor:publish --tag=laravel-pagination` // стоковые шаблоны оформления пагинации
 * `php artisan make:middleware AdminMiddleware` // генерация посредника доступа Middleware
