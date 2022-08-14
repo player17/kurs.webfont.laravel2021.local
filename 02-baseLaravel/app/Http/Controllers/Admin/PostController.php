@@ -7,6 +7,7 @@ use App\Post;
 use App\Http\Controllers\Controller;
 use App\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -55,10 +56,13 @@ class PostController extends Controller
         $data = $request->all();
 
         // Настраиваем загрузку изображений из форм
+        /*
         if($request->hasfile('thumbnail')) {
             $folder = date('Y-m-d');
             $data['thumbnail'] = $request->file('thumbnail')->store('images/' . $folder);
         }
+        */
+        $data['thumbnail'] = Post::uploadImage($request);
 
         $post = Post::create($data);
 
@@ -76,9 +80,10 @@ class PostController extends Controller
      */
     public function edit($id)
     {
+        $post = Post::find($id);
         $categories = Category::pluck('title', 'id')->all();
         $tags = Tag::pluck('title', 'id')->all();
-        return view('admin.posts.edit', compact('categories', 'tags'));
+        return view('admin.posts.edit', compact('post', 'categories', 'tags'));
     }
 
     /**
@@ -94,7 +99,33 @@ class PostController extends Controller
 
         $request->validate([
             'title' => 'required',
+            'description' => 'required',
+            'content' => 'required',
+            'category_id' => 'required|integer',
+            'thumbnail' => 'nullable|image'
         ]);
+
+        $post = Post::find($id);
+        $data = $request->all();
+
+        // Настраиваем загрузку изображений из форм
+        $data['thumbnail'] = Post::uploadImage($request, $post->thumbnail);
+        /*
+        if($request->hasfile('thumbnail')) {
+            // Удаляем старое изображение
+            Storage::delete($post->thumbnail);
+
+            $folder = date('Y-m-d');
+            $data['thumbnail'] = $request->file('thumbnail')->store('images/' . $folder);
+        }
+        */
+
+        // Перегенерация slug библиотекой sluggable
+        $post->slug = null;
+        // Сохранение тегов // belongsToMany
+        $post->tags()->sync($request->tags);
+
+        $post->update($data);
 
         $request->session()->flash('success', 'Пост обновлен');
         return redirect()->route('posts.edit', $id);
@@ -108,8 +139,12 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $Post = Post::find($id);
-        $Post->delete();
+        $post = Post::find($id);
+        // Удаляем связаные теги
+        $post->tags()->sync([]);
+        // Удаляем изображение
+        Storage::delete($post->thumbnail);
+        $post->delete();
         return redirect()->route('posts.index')->with('success', 'Пост удален');
     }
 }

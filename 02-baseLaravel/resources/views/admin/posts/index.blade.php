@@ -52,7 +52,11 @@
                                                 <!-- /app/Post->category() Один ко одному belongsTo -->
                                                 <td>{{ $post->category->title }}</td>
                                                 <!-- /app/Post->category() Многие ко многим belongsToMany -->
-                                                <td>{{ $post->tags }}</td>
+                                                <!-- нужны методы для работы с коллекциями -->
+                                                <td>
+                                                    {{-- $post->tags --}}
+                                                    {{ $post->tags->pluck('title')->join(', ') }}
+                                                </td>
                                                 <td>{{ $post->created_at }}</td>
                                                 <td>
                                                     <!-- php artisan route:list --path=admin -->

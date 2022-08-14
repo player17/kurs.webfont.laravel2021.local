@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
     // ./admin  // Admin\MainController@index  // `php artisan make:controller Admin\MainController`
+    // `php artisan route:list --path=admin`
     Route::get('/', 'MainController@index')->name('admin.index');
     // https://laravel.com/docs/9.x/controllers#actions-handled-by-resource-controller
     Route::resource('/categories', 'CategoryController');
