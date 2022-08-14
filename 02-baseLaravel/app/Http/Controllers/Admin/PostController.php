@@ -46,9 +46,24 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'description' => 'required',
+            'content' => 'required',
+            'category_id' => 'required|integer',
+            'thumbnail' => 'nullable|image'
         ]);
 
-        dd($request->all());
+        $data = $request->all();
+
+        // Настраиваем загрузку изображений из форм
+        if($request->hasfile('thumbnail')) {
+            $folder = date('Y-m-d');
+            $data['thumbnail'] = $request->file('thumbnail')->store('images/' . $folder);
+        }
+
+        $post = Post::create($data);
+
+        // Сохранение тегов // belongsToMany
+        $post->tags()->sync($request->tags);
 
         return redirect()->route('posts.index')->with('success', 'Пост добавлен');
     }

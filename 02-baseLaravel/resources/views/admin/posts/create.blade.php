@@ -36,23 +36,23 @@
                                     <label for="title">Название</label>
                                     <input type="text" name="title"
                                            class="form-control @error('title') is-invalid @enderror" id="title"
-                                           placeholder="Название">
+                                           placeholder="Название" value="{{ old('title') }}">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="description">Цитата</label>
-                                    <textarea name="description" class="form-control" id="description" rows="3"
-                                              placeholder="Цитата ..."></textarea>
+                                    <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description" rows="3"
+                                              placeholder="Цитата ...">{{ old('description') }}</textarea>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="content">Контент</label>
-                                    <textarea name="content" class="form-control" id="content" rows="7"
-                                              placeholder="Контент ..."></textarea>
+                                    <textarea name="content" class="form-control @error('content') is-invalid @enderror" id="content" rows="7"
+                                              placeholder="Контент ...">{{ old('content') }}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="category_id">Категория</label>
-                                    <select class="form-control" id="category_id" name="category_id">
+                                    <select class="form-control @error('category_id') is-invalid @enderror" id="category_id" name="category_id">
                                         <option value='null'>Выбор категории</option>
                                         @foreach($categories as $k => $cat)
                                             <option value="{{ $k }}">{{ $cat }}</option>

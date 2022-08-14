@@ -9,13 +9,21 @@ class Post extends Model
 {
     use Sluggable;
 
+    protected $fillable = [
+        'title',
+        'description',
+        'content',
+        'category_id',
+        'thumbnail',
+    ];
+
     /**
      * Многие ко многим
      * $post->tags
      */
     public function tags()
     {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Tag::class)->withTimestamps();
     }
 
     /**

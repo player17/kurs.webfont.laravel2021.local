@@ -23,7 +23,7 @@ class CreatePostsTable extends Migration
             $table->integer('category_id')->unsigned();
             //$table->integer('views')->unsigned();
             $table->integer('views', false, true)->default(0);
-            $table->string('thumnail')->nullable();
+            $table->string('thumbnail')->nullable();
             $table->timestamps();
         });
     }

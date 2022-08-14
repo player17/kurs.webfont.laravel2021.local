@@ -13,7 +13,9 @@ return [
     |
     */
 
-    'default' => env('FILESYSTEM_DRIVER', 'local'),
+    // Настраиваем загрузку изображений из форм
+    //'default' => env('FILESYSTEM_DRIVER', 'local'),
+    'default' => env('FILESYSTEM_DRIVER', 'public'),
 
     /*
     |--------------------------------------------------------------------------
@@ -48,9 +50,12 @@ return [
             'root' => storage_path('app'),
         ],
 
+        // Настраиваем загрузку изображений из форм
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
+            //'root' => storage_path('app/public'),
+            // public/uploads/...
+            'root' => public_path('uploads'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
