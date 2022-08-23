@@ -21,7 +21,7 @@
 * `php artisan migrate`  // Выполнить не активированные миграции
 * `php artisan migrate:rollback`
 * `php artisan make:migration create_posts_table`
-* `php artisan make:migration change_posts_table --table=posts`
+* `php artisan make:migration change_posts_table --table=posts` // Для таблицы post
     * `composer require doctrine/dbal`
 * `php artisan migrate:reset`
 
