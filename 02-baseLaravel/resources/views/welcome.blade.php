@@ -66,15 +66,16 @@
     <body>
         <div class="flex-center position-ref full-height">
 
+            <!-- Если есть такой router -->
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/') }}">Home</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                        @if (Route::has('register.create'))
+                            <a href="{{ route('register.create') }}">Register</a>
                         @endif
                     @endauth
                 </div>
@@ -87,13 +88,22 @@
 
                 @if (session()->has('success'))
                     <div class="mt-3 alert alert-success">
-                        {{ session('success') }}
+                        {{ session('success') }}<br><br><br>
                     </div>
                 @endif
 
                 <div class="links">
-                    <a href="/register">Register</a>
-                    <a href="/admin">Admin</a>
+
+                    @if(!Auth::check())
+                    <a href="{{ route('register.create') }}">Register</a>
+                    <a href="{{ route('login.create') }}">Login</a>
+                    @endif
+
+                    @auth
+                    <a href="{{ route('admin.index') }}">Admin</a>
+                    <a href="{{ route('logout') }}" class="text-white">Logout</a>
+                    @endauth
+
                 </div>
             </div>
         </div>

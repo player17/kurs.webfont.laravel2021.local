@@ -39,7 +39,7 @@
 * `php artisan make:controller PhotoController --resource` // Генерация контролера // -r генерация CRUD
 * `php artisan make:model Post -m` // Генерация модели и миграции к ней
 * `php artisan vendor:publish --tag=laravel-pagination` // стоковые шаблоны оформления пагинации
-* `php artisan make:middleware AdminMiddleware` // генерация посредника доступа Middleware
+* `php artisan make:middleware AdminMiddleware` // генерация посредника доступа Middleware (слой для управления правами доступа)
 * `php artisan make:mail TestMail` // настройка Mail
 * `php artisan make:seeder PostsSeeder` // генерация посева для фейковых данных в БД
   * /database/seeds/PostsSeeder.php

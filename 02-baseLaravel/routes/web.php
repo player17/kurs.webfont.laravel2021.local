@@ -17,7 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
+// Доступен только для слоя admin в /app/Http/Kernel.php
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin'], function() {
     // ./admin  // Admin\MainController@index  // `php artisan make:controller Admin\MainController`
     // `php artisan route:list --path=admin`
     Route::get('/', 'MainController@index')->name('admin.index');
@@ -27,5 +28,16 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
     Route::resource('/posts', 'PostController');
 });
 
-Route::get('/register', 'UserController@create')->name('register.create');
-Route::post('/register', 'UserController@store')->name('register.store');
+// Доступен только для слоя auth в /app/Http/Kernel.php
+Route::get('/logout', 'UserController@logout')->middleware('auth')->name('logout');
+
+// https://laravel.com/docs/9.x/middleware#assigning-middleware-to-routes
+// Доступен только для слоя guest в /app/Http/Kernel.php
+Route::group(['middleware' => 'guest'], function () {
+    Route::get('/login', 'UserController@loginForm')->name('login.create');
+    Route::post('/login', 'UserController@login')->name('login');
+    Route::get('/register', 'UserController@create')->name('register.create');
+    Route::post('/register', 'UserController@store')->name('register.store');
+});
+
+

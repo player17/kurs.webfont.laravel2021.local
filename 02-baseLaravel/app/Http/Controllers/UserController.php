@@ -47,4 +47,49 @@ class UserController extends Controller
         // return redirect()->route('home')->with('success', 'Пользователь зарегистрирован');
         return redirect()->home();
     }
+
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('home');
+    }
+
+    /**
+     *
+     */
+    public function loginForm()
+    {
+        return view('user.login');
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function login(Request $request)
+    {
+        //dd($request->all());
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        // Аутентификация после заполения формы входа
+        if(Auth::attempt([
+            'email' => $request->email,
+            'password' => $request->password,
+        ])) {
+            session()->flash('success', 'Авторизация прошла успешно');
+            if(Auth::user()->is_admin) {
+                return redirect()->route('admin.index');
+            } else {
+                return redirect()->home();
+            }
+        }
+
+        return redirect()->back()->with('error', 'Ошибка аутентификации');
+    }
 }
