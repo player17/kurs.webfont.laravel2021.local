@@ -1,5 +1,9 @@
 @extends('admin.layouts.layout')
 
+@php
+//print_r($_SERVER['DOCUMENT_ROOT']);
+@endphp
+
 @section('content')
     <div class="content">
         <!-- Content Header (Page header) -->
