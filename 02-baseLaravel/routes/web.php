@@ -13,9 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+*/
+
+Route::get('/', 'PostController@index')->name('home');
+Route::get('/article', 'PostController@show')->name('posts.single');
 
 // Доступен только для слоя admin в /app/Http/Kernel.php
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin'], function() {
