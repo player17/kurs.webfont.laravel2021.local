@@ -41,7 +41,7 @@ class PostController extends Controller
      * Store a newly created resource in storage.
      * Заменили Request $request на StorePost $request для валидации
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     //public function store(Request $request)
@@ -77,7 +77,7 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -91,8 +91,8 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     //public function update(StorePost $request, $id)
@@ -111,7 +111,12 @@ class PostController extends Controller
         $data = $request->all();
 
         // Настраиваем загрузку изображений из форм
-        $data['thumbnail'] = Post::uploadImage($request, $post->thumbnail);
+        //$data['thumbnail'] = Post::uploadImage($request, $post->thumbnail);
+        //dump($data);
+        if ($file = Post::uploadImage($request, $post->thumbnail)) {
+            $data['thumbnail'] = $file;
+        }
+        //dd($data);
         /*
         if($request->hasfile('thumbnail')) {
             // Удаляем старое изображение
@@ -136,7 +141,7 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

@@ -274,6 +274,12 @@
                         {{ session('success') }}
                     </div>
                 @endif
+
+                @if (session()->has('error'))
+                    <div class="mt-3 alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
             </div>
         </div>
 
@@ -307,10 +313,13 @@
             $(this).closest('.has-treeview').addClass('menu-open');
         }
     });
+    $(document).ready(function () {
+        bsCustomFileInput.init();
+    });
 </script>
+
 <script src="{{ asset('library/ckeditor5/build/ckeditor.js') }}"></script>
 <script src="{{ asset('library/ckfinder/ckfinder.js') }}"></script>
-
 <script>
     if(document.querySelector( '#description' )) {
         ClassicEditor
@@ -380,7 +389,6 @@
                 console.error( error );
             } );
     }
-
 </script>
 
 </body>

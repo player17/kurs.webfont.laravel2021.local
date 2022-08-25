@@ -96,8 +96,18 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
+        //$tag = Tag::find($id);
+        //$tag->delete();
+
+        //Tag::destroy($id);
+
         $tag = Tag::find($id);
+        //dd($tag->posts->count());
+        if($tag->posts->count()) {
+            return redirect()->route('tags.index')->with('error', 'Ошибка удаления, есть прикрепленные записи');
+        }
         $tag->delete();
+
         return redirect()->route('tags.index')->with('success', 'Тег удален');
     }
 }
