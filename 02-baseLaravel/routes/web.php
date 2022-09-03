@@ -20,7 +20,10 @@ Route::get('/', function () {
 */
 
 Route::get('/', 'PostController@index')->name('home');
-Route::get('/article', 'PostController@show')->name('posts.single');
+Route::get('/article/{slug}', 'PostController@show')->name('posts.single');
+
+Route::get('/category/{slug}', 'CategoryController@show')->name('categories.single');
+
 
 // Доступен только для слоя admin в /app/Http/Kernel.php
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin'], function() {
