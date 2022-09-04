@@ -13,8 +13,16 @@ class PostController extends Controller
         return view('posts.index', compact('posts'));
     }
 
+    /**
+     * Страница поста
+     * @param $slug
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function show($slug)
     {
-        return view('posts.show');
+        $post = Post::where('slug', $slug)->firstOrFail();
+        $post->views += 1;
+        $post->update();
+        return view('posts.show', compact('post'));
     }
 }

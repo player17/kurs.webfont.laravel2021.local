@@ -39,30 +39,24 @@
                             <a class="nav-link" href="marketing-index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="marketing-category.html">Marketing</a>
+                            <a class="nav-link" href="{{ route('categories.single', ['slug' => 'ekonomika']) }}">Экономика</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="marketing-category.html">Make Money</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="marketing-blog.html">Blog</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="marketing-contact.html">Contact Us</a>
+                            <a class="nav-link" href="{{ route('categories.single', ['slug' => 'kategoriya-3']) }}">Категория 3</a>
                         </li>
                         @if(Auth::check())
                             <li class="nav-item">
-                                <a class="nav-link" href="admin">Admin</a>
+                                <a class="nav-link" href="/admin">Admin</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="logout">Logout</a>
+                                <a class="nav-link" href="/logout">Logout</a>
                             </li>
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="login">Login</a>
+                                <a class="nav-link" href="/login">Login</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="register">Register</a>
+                                <a class="nav-link" href="/register">Register</a>
                             </li>
                         @endif
 
