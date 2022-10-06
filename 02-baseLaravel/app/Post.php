@@ -71,7 +71,7 @@ class Post extends Model
      */
     public function getImage()
     {
-        if(!$this->thumbnail) {
+        if (!$this->thumbnail) {
             return asset('no-image.png');
         }
         return asset('uploads/' . $this->thumbnail);
@@ -86,5 +86,15 @@ class Post extends Model
         // Где храниться
         // Какой вернуть
         return Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->translatedFormat('d F, Y');
+    }
+
+    /**
+     * Скоуп запросы в базу данных
+     * https://laravel.com/docs/9.x/eloquent#local-scopes
+     *
+     */
+    public function scopeLike($query, $s)
+    {
+        return $query->where('title', 'LIKE', "%{$s}%");
     }
 }
