@@ -12,6 +12,7 @@
 * https://www.apachefriends.org/ru/index.html
 
 ## Консольные команды
+* `php artisan --version`
 * `php artisan list`
 * `php artisan help make:model`
 * `php artisan route:list --path=admin` // Список всех существующих маршрутов // --path фильтр по URL
@@ -53,4 +54,7 @@
   * `php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"`
 * `composer require cviebrock/eloquent-sluggable:^7.0`
 
-
+## Обновление Laravel
+* `https://laravel.com/docs/8.x/upgrade`
+* `composer self-update`
+* `composer update`

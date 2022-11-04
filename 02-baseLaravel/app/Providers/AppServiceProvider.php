@@ -6,6 +6,7 @@ use App\Category;
 use App\Post;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Paginator::useBootstrap();
         // Получение данных для sidebar
         view()->composer('layouts.sidebar', function($view) {
 

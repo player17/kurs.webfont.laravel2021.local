@@ -1,5 +1,5 @@
 RewriteEngine On
-# 01 module
+# 01 module # Laravel 7
 # RewriteRule (.*) 01-baseLaravel/public/$1
-# 02 module
+# 02 module # Laravel 7
 RewriteRule (.*) 02-baseLaravel/public/$1
