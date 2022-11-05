@@ -58,3 +58,4 @@
 * `https://laravel.com/docs/8.x/upgrade`
 * `composer self-update`
 * `composer update`
+* `composer dump-autoload` // Обновление автозагрузчика
