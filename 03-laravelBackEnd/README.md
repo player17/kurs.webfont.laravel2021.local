@@ -70,8 +70,14 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 
 ## Мои комменты
+###### 02 video `Инициализация`
 * `composer update`
 * `php artisan migrate`
 * `php artisan passport:install`
+
+###### 03 video `Заготовка для модулей`
+* `php artisan make:command ModuleMake` // заготовка для генерации модулей
+  * `app\Console\Commands\ModuleMake.php`
+* `php artisan make:module Admin\User --all`
 
 
