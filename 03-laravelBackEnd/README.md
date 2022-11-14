@@ -19,6 +19,15 @@
   * `/config/app.php ` // Подключить в 'providers' => [
 * `php artisan route:list` // Проверка работы нового провайдера
 
+###### 06 video `Модуль аутентификации 01`
+* `php artisan make:module Pub\Auth --controller --api --view` // Генерация модуля /app/Modules/Pub/Auth
+    * `php artisan route:list` // Маршрутов пока для нового модуля нет
+* `config\modular.php` // Добавить модуль в конфигурацию 'Pub' => ['Auth']
+    * `php artisan route:list` // Маршруты появились
+* `php artisan make:controller App/Modules/Pub/Auth/Controllers/LoginController` // Доп контролер для входа
+* `php artisan make:controller App/Modules/Pub/Auth/Controllers/Api/LoginController` // Доп контролер для входа
+
+
 
 
 
