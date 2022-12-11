@@ -11,7 +11,7 @@ class LoginController extends Controller
     //
     use AuthenticatesUsers;
 
-    protected $redirectedTo = '/admin/dashboard';
+    protected $redirectTo = '/admin/users';
 
     public function  __construct()
     {
@@ -26,7 +26,6 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         $title = __('Login');
-
         return view('Pub::Auth.login');
     }
 

@@ -27,8 +27,17 @@
 * `php artisan make:controller App/Modules/Pub/Auth/Controllers/LoginController` // Доп контролер для входа
 * `php artisan make:controller App/Modules/Pub/Auth/Controllers/Api/LoginController` // Доп контролер для входа
 
-
-
+###### 08 video `Модуль аутентификации 03`
+* `/app/Modules/Admin/User/Migrations/` // Миграции для базы + удалить старые
+    * `php artisan migrate --path=app/Modules/Admin/User/Migrations`
+* `php artisan make:seed CreateAdminUser` // Генерация сида - псевдо данные в БД
+    * `/database/seeders/CreateAdminUser.php`
+        * `php artisan db:seed --class=CreateAdminUser`
+* `http://kurs.webfont.laravel2021.local/auths/login` // admin@admin.com + admin
+    * `php artisan cache:clear`
+    * `php artisan config:clear`
+    * `php artisan route:clear`
+    * `php artisan view:clear`
 
 
 
