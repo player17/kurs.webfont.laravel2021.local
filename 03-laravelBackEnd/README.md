@@ -1,3 +1,10 @@
+##
+* `README.md`
+* `composer.lock`
+* `composer.json`
+* `.gitignore`
+* `.env`
+
 ## Мои комменты
 ###### 02 video `Инициализация`
 * `composer update`
@@ -39,6 +46,10 @@
     * `php artisan route:clear`
     * `php artisan view:clear`
 
+###### 09 video `Модуль аутентификации 04 БД под API`
+* `http://kurs.webfont.laravel2021.local/api/pub/auth/login` // postman + workspace (my workspace) + post + admin@admin.com + admin
+* `php artisan make:request App/Modules/Pub/Auth/Requests/LoginRequest`
+    * `/app/Modules/Pub/Auth/Requests/LoginRequest.php`
 
 
 
