@@ -13,7 +13,8 @@ return [
 
     'modules' => [
         'Admin' => [
-            'User'
+            'Dashboard',
+            'User',
         ],
 
         'Pub' => [

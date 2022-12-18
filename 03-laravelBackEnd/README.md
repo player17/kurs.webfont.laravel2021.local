@@ -51,5 +51,11 @@
 * `php artisan make:request App/Modules/Pub/Auth/Requests/LoginRequest`
     * `/app/Modules/Pub/Auth/Requests/LoginRequest.php`
 
+###### 10 video `Настройка конфигов + подключение шаблона`
+* `/app/Console/Commands/ModuleMake.php`
+    * `function updateModularConfig() { ...` // запись в /config/modular.php ч/з регулярки
+* `php artisan make:module Admin\Dashboard --controller --view`
+    * `http://kurs.webfont.laravel2021.local/auths/login` // admin@admin.com + admin
+    * `http://kurs.webfont.laravel2021.local/admin/dashboard` 
 
 
