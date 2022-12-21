@@ -58,4 +58,8 @@
     * `http://kurs.webfont.laravel2021.local/auths/login` // admin@admin.com + admin
     * `http://kurs.webfont.laravel2021.local/admin/dashboard` 
 
-
+###### 11 video `Главная страница админки`
+* `http://kurs.webfont.laravel2021.local/auths/login` // admin@admin.com + admin
+* `http://kurs.webfont.laravel2021.local/admin/dashboard`
+* `php artisan make:provider App/Services/Localization/LocalizationServiceProvider` // Доп.провайдер для мультиязычности в URL
+    * `/config/app.php` // Добавить провайдер в 'providers' => [...
