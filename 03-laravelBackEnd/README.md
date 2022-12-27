@@ -63,3 +63,11 @@
 * `http://kurs.webfont.laravel2021.local/admin/dashboard`
 * `php artisan make:provider App/Services/Localization/LocalizationServiceProvider` // Доп.провайдер для мультиязычности в URL
     * `/config/app.php` // Добавить провайдер в 'providers' => [...
+
+###### 12 video `Модуль меню`
+* `php artisan make:module Admin\Menu --controller --model --api --migration`
+    * `/app/Modules/Admin/Menu`
+* `php artisan migrate --path=App/Modules/Admin/Menu/Migrations`
+* `php artisan make:seed AddMenu` // наполняем меню данными
+    * `/database/seeders/AddMenu.php`
+* `php artisan db:seed --class=AddMenu`
