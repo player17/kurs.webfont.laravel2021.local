@@ -47,7 +47,7 @@
     * `php artisan view:clear`
 
 ###### 09 video `Модуль аутентификации 04 БД под API`
-* `http://kurs.webfont.laravel2021.local/api/pub/auth/login` // postman + workspace (my workspace) + post + admin@admin.com + admin
+* `http://kurs.webfont.laravel2021.local/api/pub/auths/login` // postman + workspace (my workspace) + post + admin@admin.com + admin
 * `php artisan make:request App/Modules/Pub/Auth/Requests/LoginRequest`
     * `/app/Modules/Pub/Auth/Requests/LoginRequest.php`
 
@@ -63,11 +63,22 @@
 * `http://kurs.webfont.laravel2021.local/admin/dashboard`
 * `php artisan make:provider App/Services/Localization/LocalizationServiceProvider` // Доп.провайдер для мультиязычности в URL
     * `/config/app.php` // Добавить провайдер в 'providers' => [...
+    * `http://kurs.webfont.laravel2021.local/en/admin/dashboard`
+        * `/resources/lang/en`
+        * `{{__('admin.dahsboard_title')}}`
 
-###### 12 video `Модуль меню`
+###### 12 video `Модуль меню 01`
 * `php artisan make:module Admin\Menu --controller --model --api --migration`
     * `/app/Modules/Admin/Menu`
 * `php artisan migrate --path=App/Modules/Admin/Menu/Migrations`
-* `php artisan make:seed AddMenu` // наполняем меню данными
+* `php artisan make:seed AddMenu`
     * `/database/seeders/AddMenu.php`
-* `php artisan db:seed --class=AddMenu`
+* `php artisan db:seed --class=AddMenu` // наполняем меню данными
+
+###### 12 video `Модуль меню 02`
+* `php artisan db:seed --class=AddMenu` // наполняем меню еще данными
+    * `/database/seeders/AddMenu.php`
+* `http://kurs.webfont.laravel2021.local/api/pub/auths/login` // postman + workspace (my workspace) + post + admin@admin.com + admin
+    * копируем api_token
+    * `http://kurs.webfont.laravel2021.local/api/admin/menus` // get + Authorization[bearer Token == api_token]
+    * очистить кешь шаблонов
