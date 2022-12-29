@@ -75,10 +75,26 @@
     * `/database/seeders/AddMenu.php`
 * `php artisan db:seed --class=AddMenu` // наполняем меню данными
 
-###### 12 video `Модуль меню 02`
+###### 13 video `Модуль меню 02`
 * `php artisan db:seed --class=AddMenu` // наполняем меню еще данными
     * `/database/seeders/AddMenu.php`
 * `http://kurs.webfont.laravel2021.local/api/pub/auths/login` // postman + workspace (my workspace) + post + admin@admin.com + admin
     * копируем api_token
     * `http://kurs.webfont.laravel2021.local/api/admin/menus` // get + Authorization[bearer Token == api_token]
     * очистить кешь шаблонов
+
+###### 14 video `Права и привелегии`
+* `php artisan make:module Admin\Role --controller --api --view --model --migration`
+    * `/config/modular.php`
+    * `/app/Modules/Admin/Role/...`
+    * `/resources/views/Admin/Role/...`
+* `php artisan make:controller App/Modules/Admin/Role/Controllers/PermissionsController --resource`
+    * `/app/Modules/Admin/Role/Controllers/PermissionsController.php`
+* `php artisan make:model App/Modules/Admin/Role/Models/Permission`
+    * `/app/Modules/Admin/Role/Models/Permission.php`
+* `php artisan make:policy App/Modules/Admin/Role/Policies/RolePolicy`
+    * `/app/Modules/Admin/Role/Policies/RolePolicy.php`
+* `php artisan make:migration --path=app/Modules/Admin/Role/Migrations CreatePermissions --create=permissions`
+    * `/app/Modules/Admin/Role/Migrations/2022_12_29_201338_create_permissions.php`
+* `php artisan make:migration --path=app/Modules/Admin/Role/Migrations CreateRolePermissions`
+* `php artisan migrate --path=app/Modules/Admin/Role/Migrations` // Скипирую миграции и запусти
