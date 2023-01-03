@@ -83,7 +83,7 @@
     * `http://kurs.webfont.laravel2021.local/api/admin/menus` // get + Authorization[bearer Token == api_token]
     * очистить кешь шаблонов
 
-###### 14 video `Права и привелегии`
+###### 14 video `Права и привелегии 01`
 * `php artisan make:module Admin\Role --controller --api --view --model --migration`
     * `/config/modular.php`
     * `/app/Modules/Admin/Role/...`
@@ -98,3 +98,10 @@
     * `/app/Modules/Admin/Role/Migrations/2022_12_29_201338_create_permissions.php`
 * `php artisan make:migration --path=app/Modules/Admin/Role/Migrations CreateRolePermissions`
 * `php artisan migrate --path=app/Modules/Admin/Role/Migrations` // Скипирую миграции и запусти
+
+###### 15 video `Права и привелегии 02`
+* `php artisan make:request App/Modules/Admin/Role/Requests/RoleRequest` // Валидация добавления ролей
+    * `http://kurs.webfont.laravel2021.local/auths/login` // admin@admin.com + admin
+    * `http://kurs.webfont.laravel2021.local/admin/dashboard`
+    * `http://kurs.webfont.laravel2021.local/admin/roles`
+    * `http://kurs.webfont.laravel2021.local/admin/permissions`

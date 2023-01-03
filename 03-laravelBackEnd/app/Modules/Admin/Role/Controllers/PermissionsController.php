@@ -3,10 +3,24 @@
 namespace App\Modules\Admin\Role\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Modules\Admin\Dashboard\Classes\Base;
+use App\Modules\Admin\Role\Models\Permission;
+use App\Modules\Admin\Role\Models\Role;
+use App\Modules\Admin\Role\Services\PermService;
 use Illuminate\Http\Request;
 
-class PermissionsController extends Controller
+class PermissionsController extends Base
 {
+
+    /**
+     * RoleController constructor.
+     */
+    public function __construct(PermService $permService)
+    {
+        parent::__construct();
+        $this->service = $permService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +28,22 @@ class PermissionsController extends Controller
      */
     public function index()
     {
-        //
+        $this->authorize('view', Role::class);
+
+        $perms = Permission::all();
+        $roles = Role::all();
+
+        $this->title = "Title Perm Index";
+
+        $this->content = view('Admin::Permission.index')->
+        with([
+            'perms' => $perms,
+            'roles' => $roles,
+            'title' => $this->title,
+        ])->
+        render();
+
+        return $this->renderOutput();
     }
 
     /**
@@ -36,6 +65,7 @@ class PermissionsController extends Controller
     public function store(Request $request)
     {
         //
+
     }
 
     /**
