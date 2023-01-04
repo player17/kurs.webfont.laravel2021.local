@@ -45,6 +45,12 @@
     * `php artisan config:clear`
     * `php artisan route:clear`
     * `php artisan view:clear`
+    * `/app/Http/Kernel.php` // определяет посредников для каждой группы пользователей
+    * `/app/Http/Middleware/Authenticate.php` // редирект если нужна авторизация
+    * `php artisan route:list` // Маршруты
+    * `/config/modular.php` // Конфигурация Midleware
+    * `/app/Providers/RouteServiceProvider.php` // Собирает все routers
+    * `/app/Providers/ModularProvider.php` // Формирует посредников
 
 ###### 09 video `Модуль аутентификации 04 БД под API`
 * `http://kurs.webfont.laravel2021.local/api/pub/auths/login` // postman + workspace (my workspace) + post + admin@admin.com + admin
@@ -105,3 +111,9 @@
     * `http://kurs.webfont.laravel2021.local/admin/dashboard`
     * `http://kurs.webfont.laravel2021.local/admin/roles`
     * `http://kurs.webfont.laravel2021.local/admin/permissions`
+
+###### 16 video `Права и привелегии 03`
+* `http://kurs.webfont.laravel2021.local/admin/permissions` // Логика работы модуля
+* `permission_role && role_user` // Таблицы в базе
+
+
