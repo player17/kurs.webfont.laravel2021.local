@@ -79,7 +79,7 @@
 * `php artisan migrate --path=App/Modules/Admin/Menu/Migrations`
 * `php artisan make:seed AddMenu`
     * `/database/seeders/AddMenu.php`
-* `php artisan db:seed --class=AddMenu` // наполняем меню данными
+* `php artisan db:seed --class=AddMenu` // наполняем меню данны ми
 
 ###### 13 video `Модуль меню 02`
 * `php artisan db:seed --class=AddMenu` // наполняем меню еще данными
@@ -115,5 +115,17 @@
 ###### 16 video `Права и привелегии 03`
 * `http://kurs.webfont.laravel2021.local/admin/permissions` // Логика работы модуля
 * `permission_role && role_user` // Таблицы в базе
+    * `php artisan cache:clear`
+    * `php artisan config:clear`
+    * `php artisan route:clear`
+    * `php artisan view:clear`
 
-
+###### 17 video `Права и привелегии 04 && Menu API Permission`
+* `php artisan make:migration AddPermissionMenuTable --path=app/Modules/Admin/Menu/Migrations`
+    * `php artisan migrate --path=app/Modules/Admin/Menu/Migrations`
+        * `INSERT INTO permission_menu (permission_id, menu_id) VALUES ('1', '9');`
+        * `INSERT INTO role_user (id, user_id, role_id, created_at, updated_at) VALUES (NULL, '1', '1', NULL, NULL);`
+* `http://kurs.webfont.laravel2021.local/api/pub/auths/login` // postman + workspace (my workspace) + post + admin@admin.com[email] + admin[password]
+    * копируем api_token
+    * `http://kurs.webfont.laravel2021.local/api/admin/menus` // get + Authorization[bearer Token == api_token]
+    * очистить кешь шаблонов
