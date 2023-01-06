@@ -129,3 +129,14 @@
     * копируем api_token
     * `http://kurs.webfont.laravel2021.local/api/admin/menus` // get + Authorization[bearer Token == api_token]
     * очистить кешь шаблонов
+
+###### 18 video `API CRUD Users`
+* `php artisan make:policy App/Modules/Admin/User/Policies/UserPolicy` // Политика безопасности
+    * `INSERT INTO permissions (id, alias, title, created_at, updated_at) VALUES (NULL, 'USER_ACCESS', 'USER_ACCESS', NULL, NULL);`
+* `http://kurs.webfont.laravel2021.local/api/pub/auths/login` // postman + workspace (my workspace) + post + admin@admin.com[email] + admin[password]
+    * `http://kurs.webfont.laravel2021.local/api/admin/users` // get + Authorization[bearer Token == api_token]
+* `php artisan make:request App/Modules/Admin/User/Requests/UserRequest` // Для валидации данных
+    * `http://kurs.webfont.laravel2021.local/api/admin/users` // post ==> create new user Tab Body [firstname,lastname,email,phone,password,password_confirmation,role_id]
+    * `http://kurs.webfont.laravel2021.local/api/admin/users/{user_id}` // put ==> update user data
+    * `http://kurs.webfont.laravel2021.local/api/admin/users/{user_id}` // delete ==> deactivate user
+
