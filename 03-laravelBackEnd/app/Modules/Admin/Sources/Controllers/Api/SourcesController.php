@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Modules\Admin\User\Controllers\Api;
+namespace App\Modules\Admin\Sources\Controllers\Api;
 
-use App\Modules\Admin\User\Models\User;
-use App\Modules\Admin\User\Requests\UserRequest;
-use App\Modules\Admin\User\Services\UserService;
+use App\Modules\Admin\Sources\Models\Source;
+use App\Modules\Admin\Sources\Requests\SourcesRequest;
+use App\Modules\Admin\Sources\Services\SourcesService;
 use App\Services\Response\ResponseServise;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class UserController extends Controller
+class SourcesController extends Controller
 {
 
     private $service;
@@ -17,11 +17,10 @@ class UserController extends Controller
     /**
      * RoleController constructor.
      */
-    public function __construct(UserService $userService)
+    public function __construct(SourcesService $sourcesService)
     {
-        $this->service = $userService;
+        $this->service = $sourcesService;
     }
-
 
     /**
      * Display a listing of the resource.
@@ -31,12 +30,10 @@ class UserController extends Controller
     public function index()
     {
         //
-        $this->authorize('view', new User());
-
-        $users = $this->service->getUsers();
+        $this->authorize('view', new Source());
 
         return ResponseServise::sendJsonResponse(true, 200,[],[
-           'items' =>  $users->toArray()
+            'items' =>  $this->service->getSources()
         ]);
     }
 
@@ -56,35 +53,35 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(SourcesRequest $request)
     {
         //
-        $user = $this->service->save($request, new User());
+        $item = $this->service->save($request, new Source());
         return ResponseServise::sendJsonResponse(true, 200,[],[
-            'item' =>  $user->toArray()
+            'item' =>  $item->toArray()
         ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Modules\Admin\User\Models\User  $user
+     * @param  \App\Modules\Admin\Sources\Models\Source  $source
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Source $source)
     {
         return ResponseServise::sendJsonResponse(true, 200,[],[
-            'item' =>  $user->toArray()
+            'item' =>  $source
         ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Modules\Admin\User\Models\User  $user
+     * @param  \App\Modules\Admin\Sources\Models\Source  $source
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Source $source)
     {
         //
     }
@@ -93,42 +90,31 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Modules\Admin\User\Models\User  $user
+     * @param  \App\Modules\Admin\Sources\Models\Source  $source
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request, User $user)
+    public function update(SourcesRequest $request, Source $source)
     {
-        $user = $this->service->save($request, $user);
+        //
+
+        $item = $this->service->save($request, $source);
         return ResponseServise::sendJsonResponse(true, 200,[],[
-            'item' =>  $user->toArray()
+            'item' =>  $item->toArray()
         ]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Modules\Admin\User\Models\User  $user
+     * @param  \App\Modules\Admin\Sources\Models\Source  $source
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Source $source)
     {
         //
-        $user->status = '0';
-        $user->update();
-
+        $source->delete();
         return ResponseServise::sendJsonResponse(true, 200,[],[
-            'item' =>  $user->toArray()
-        ]);
-    }
-
-    public function usersForm() {
-        //
-        $this->authorize('view', new User());
-
-        $users = $this->service->getUsers(1);
-
-        return ResponseServise::sendJsonResponse(true, 200,[],[
-            'items' =>  $users->toArray()
+            'item' =>  $source
         ]);
     }
 }

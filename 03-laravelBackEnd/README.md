@@ -140,3 +140,21 @@
     * `http://kurs.webfont.laravel2021.local/api/admin/users/{user_id}` // put ==> update user data
     * `http://kurs.webfont.laravel2021.local/api/admin/users/{user_id}` // delete ==> deactivate user
 
+###### 19 video `Источники лидов`
+* `php artisan make:module Admin\Sources --api --model`
+* `php artisan make:request App/Modules/Admin/Sources/Requests/SourcesRequest`
+* `php artisan make:module Admin\Sources --migration`
+    * `php artisan migrate --path=app/Modules/Admin/Sources/Migrations`
+* `php artisan make:policy App/Modules/Admin/Sources/Policies/SourcePolicy`
+    * `INSERT INTO permissions (id, alias, title, created_at, updated_at) VALUES (NULL, 'SOURCES_ACCESS', '', NULL, NULL);`
+* `php artisan db:seed --class=App\Modules\Admin\Sources\Seeds\SourcesSeed`
+* `http://kurs.webfont.laravel2021.local/api/pub/auths/login` // postman + workspace (my workspace) + post + admin@admin.com[email] + admin[password]
+    * `http://kurs.webfont.laravel2021.local/api/admin/sources` // get + Authorization[bearer Token == api_token]
+    * `http://kurs.webfont.laravel2021.local/api/admin/sources` // post ==> create new raw [title]
+    * `http://kurs.webfont.laravel2021.local/api/admin/sources/5` // put  ==> up line [title]
+    * `http://kurs.webfont.laravel2021.local/api/admin/sources/5` // delete  ==> del line [title]
+
+
+
+
+
