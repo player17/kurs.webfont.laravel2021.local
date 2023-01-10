@@ -165,6 +165,12 @@
 * `php artisan make:module Admin\Status --model`
 * `php artisan make:module Admin\LeadComment --api --model --migration`
 
-
+###### 21 video `api lead processing 02`
+* `php artisan db:seed --class=\App\Modules\Admin\Lead\Seeds\StatusTable`
+* `php artisan db:seed --class=\App\Modules\Admin\Lead\Seeds\UnitTable`
+    * `INSERT INTO leads (id, phone, link, count_create, is_processed, isQualityLead, is_express_delivery, is_add_sale, source_id, unit_id, user_id, status_id, created_at, updated_at) VALUES (NULL, '89225654891', 'httsp://google.com', '1', '0', '0', '0', '0', '1', '1', '2', '1', '2023-01-10 22:20:25', '2023-01-10 22:20:25');`
+* `http://kurs.webfont.laravel2021.local/api/pub/auths/login` // postman + workspace (my workspace) + post + admin@admin.com[email] + admin[password]
+    * `http://kurs.webfont.laravel2021.local/api/admin/leads` // get + Authorization[bearer Token == api_token]
+    * `http://kurs.webfont.laravel2021.local/api/admin/leads` // post ==> create new lead [link,source_id,unit_id,is_processed]
 
 
