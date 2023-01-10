@@ -154,6 +154,16 @@
     * `http://kurs.webfont.laravel2021.local/api/admin/sources/5` // put  ==> up line [title]
     * `http://kurs.webfont.laravel2021.local/api/admin/sources/5` // delete  ==> del line [title]
 
+###### 20 video `api lead processing 01`
+* `php artisan make:module Admin\Lead --api --model --migration`
+    * `php artisan migrate --path=App/Modules/Admin/Lead/Migrations`
+* `php artisan make:policy App/Modules/Admin/Lead/Policies/LeadPolicy`
+    * `INSERT INTO permissions (id, alias, title, created_at, updated_at) VALUES (NULL, 'ROLES_ACCESS', 'Roles Access', NULL, NULL);
+      INSERT INTO permissions (id, alias, title, created_at, updated_at) VALUES (NULL, 'LEADS_CREATE', 'LEADS CREATE', NULL, NULL), (NULL, 'LEADS_EDIT', 'LEADS EDIT', NULL, NULL);
+      INSERT INTO permissions (id, alias, title, created_at, updated_at) VALUES (NULL, 'LEADS_ACCESS', 'LEADS ACCESS', NULL, NULL), (NULL, 'DASHBOARD_ACCESS', 'DASHBOARD ACCESS', NULL, NULL);`
+* `php artisan make:module Admin\Unit --model`
+* `php artisan make:module Admin\Status --model`
+* `php artisan make:module Admin\LeadComment --api --model --migration`
 
 
 
