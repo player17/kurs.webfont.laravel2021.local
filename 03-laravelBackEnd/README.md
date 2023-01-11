@@ -173,4 +173,9 @@
     * `http://kurs.webfont.laravel2021.local/api/admin/leads` // get + Authorization[bearer Token == api_token]
     * `http://kurs.webfont.laravel2021.local/api/admin/leads` // post ==> create new lead [link,source_id,unit_id,is_processed]
 
-
+###### 22 video `api lead processing 02`
+* `php artisan migrate --path=app/Modules/Admin/LeadComment/Migrations`
+* `php artisan make:migration CreateLeadStatusTable --create=lead_status --path=app/Modules/Admin/Lead/Migrations`
+    * `php artisan migrate --path=app/Modules/Admin/Lead/Migrations`
+* `http://kurs.webfont.laravel2021.local/api/pub/auths/login` // postman + workspace (my workspace) + post + admin@admin.com[email] + admin[password]
+    * `http://kurs.webfont.laravel2021.local/api/admin/leads` // post ==> create new lead [link,source_id,unit_id,is_processed,text]

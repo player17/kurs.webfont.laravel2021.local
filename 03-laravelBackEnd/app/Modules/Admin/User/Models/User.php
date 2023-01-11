@@ -24,6 +24,10 @@ class User extends AuthUser
         'password'
     ];
 
+    public function getFullnameAttribute() {
+        return $this->firtsname.' '.$this->lastname;
+    }
+
 
 
 
