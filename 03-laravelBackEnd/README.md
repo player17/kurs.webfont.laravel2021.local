@@ -188,3 +188,11 @@
 * `http://kurs.webfont.laravel2021.local/api/pub/auths/login` // postman + workspace (my workspace) + post + admin@admin.com[email] + admin[password]
     * `http://kurs.webfont.laravel2021.local/api/admin/lead-comments` // post ==> create new comment [lead_id,status_id,text]
     * `http://kurs.webfont.laravel2021.local/api/admin/leads/3` // put ==> create new comment [link,source_id,unit_id,is_processed,text] (`lead_comments`)
+
+###### 24 video `api lead processing 05`
+* `http://kurs.webfont.laravel2021.local/api/pub/auths/login` // postman + workspace (my workspace) + post + admin@admin.com[email] + admin[password]
+    * `http://kurs.webfont.laravel2021.local/api/admin/leads/archive/index` // get + Authorization[bearer Token == api_token]
+    * `http://kurs.webfont.laravel2021.local/api/admin/leads/create/check` // post ==> check lead [link,phone] `leads`
+    * `http://kurs.webfont.laravel2021.local/api/admin/leads/update/quality/3` // put ==> up lead `leads`.`isQualityLead`
+
+###### 25 video

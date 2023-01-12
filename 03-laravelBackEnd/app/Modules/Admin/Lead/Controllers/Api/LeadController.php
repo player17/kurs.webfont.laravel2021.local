@@ -80,7 +80,10 @@ class LeadController extends Controller
      */
     public function show(Lead $lead)
     {
-        //
+        $this->authorize('view', Lead::class);
+        return ResponseServise::sendJsonResponse(true, 200, [],[
+            'item' => $lead
+        ]);
     }
 
     /**
@@ -123,4 +126,44 @@ class LeadController extends Controller
     {
         //
     }
+
+    public function archive() {
+        $this->authorize('view', Lead::class);
+
+        $leads = $this->service->archive();
+
+        return ResponseServise::sendJsonResponse(true, 200, [],[
+            'items' => $leads
+        ]);
+    }
+
+    public function checkExist(Request $request) {
+
+        $this->authorize('create', Lead::class);
+
+        $lead = $this->service->checkExist($request);
+
+        if($lead) {
+            return ResponseServise::sendJsonResponse(true, 200, [],[
+                'item' => $lead,
+                'exist' => true
+            ]);
+        }
+
+        return ResponseServise::success();
+
+    }
+
+    public function updateQuality(Request $request, Lead $lead) {
+
+        $this->authorize('edit', Lead::class);
+
+        $lead = $this->service->updateQuality($request, $lead);
+
+        return ResponseServise::sendJsonResponse(true, 200, [],[
+            'item' => $lead
+        ]);
+
+    }
+
 }
