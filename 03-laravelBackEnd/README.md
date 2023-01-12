@@ -173,9 +173,18 @@
     * `http://kurs.webfont.laravel2021.local/api/admin/leads` // get + Authorization[bearer Token == api_token]
     * `http://kurs.webfont.laravel2021.local/api/admin/leads` // post ==> create new lead [link,source_id,unit_id,is_processed]
 
-###### 22 video `api lead processing 02`
+###### 22 video `api lead processing 03`
 * `php artisan migrate --path=app/Modules/Admin/LeadComment/Migrations`
 * `php artisan make:migration CreateLeadStatusTable --create=lead_status --path=app/Modules/Admin/Lead/Migrations`
     * `php artisan migrate --path=app/Modules/Admin/Lead/Migrations`
 * `http://kurs.webfont.laravel2021.local/api/pub/auths/login` // postman + workspace (my workspace) + post + admin@admin.com[email] + admin[password]
     * `http://kurs.webfont.laravel2021.local/api/admin/leads` // post ==> create new lead [link,source_id,unit_id,is_processed,text]
+
+###### 23 video `api lead processing 04`
+* `php artisan make:policy App/Modules/Admin/LeadComment/Policies/LeadCommentPolicy`
+    * `/app/Providers/AuthServiceProvider.php` // Регистрация политики безопасности
+    * `INSERT INTO permissions (id, alias, title, created_at, updated_at) VALUES (NULL, 'LEADS_COMMENT_ACCESS', 'LEADS COMMENT ACCESS', NULL, NULL);`
+* `php artisan make:request App/Modules/Admin/LeadComment/Requests/LeadCommentRequest`
+* `http://kurs.webfont.laravel2021.local/api/pub/auths/login` // postman + workspace (my workspace) + post + admin@admin.com[email] + admin[password]
+    * `http://kurs.webfont.laravel2021.local/api/admin/lead-comments` // post ==> create new comment [lead_id,status_id,text]
+    * `http://kurs.webfont.laravel2021.local/api/admin/leads/3` // put ==> create new comment [link,source_id,unit_id,is_processed,text] (`lead_comments`)

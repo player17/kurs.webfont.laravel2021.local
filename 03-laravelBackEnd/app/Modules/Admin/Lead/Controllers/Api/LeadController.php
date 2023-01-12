@@ -101,9 +101,16 @@ class LeadController extends Controller
      * @param  \App\Modules\Admin\Lead\Models\Lead  $lead
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Lead $lead)
+    public function update(LeadCreateRequest $request, Lead $lead)
     {
-        //
+        $this->authorize('edit', Lead::class);
+
+        $lead = $this->service->update($request, Auth::user(), $lead);
+
+        return ResponseServise::sendJsonResponse(true, 200, [],[
+            'item' => $lead
+        ]);
+
     }
 
     /**
