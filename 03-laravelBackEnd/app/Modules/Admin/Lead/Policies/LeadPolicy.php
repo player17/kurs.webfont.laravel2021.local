@@ -2,12 +2,13 @@
 
 namespace App\Modules\Admin\Lead\Policies;
 
+use App\Modules\Admin\Analitics\Policies\AnaliticsPolicy;
 use App\Modules\Admin\User\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class LeadPolicy
 {
-    use HandlesAuthorization;
+    use HandlesAuthorization, AnaliticsPolicy;
 
     /**
      * Create a new policy instance.

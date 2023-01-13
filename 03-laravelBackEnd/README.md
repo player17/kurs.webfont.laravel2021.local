@@ -195,4 +195,10 @@
     * `http://kurs.webfont.laravel2021.local/api/admin/leads/create/check` // post ==> check lead [link,phone] `leads`
     * `http://kurs.webfont.laravel2021.local/api/admin/leads/update/quality/3` // put ==> up lead `leads`.`isQualityLead`
 
-###### 25 video
+###### 25 video `module analitic leads 01`
+* `php artisan make:module Admin\Analitics --controller --api --migration`
+* `php artisan make:policy App/Modules/Admin/Analitics/Policies/AnaliticsPolicy`
+* `php artisan migrate --path=App/Modules/Admin/Analitics/Migrations`
+* `INSERT INTO permissions (id, alias, title, created_at, updated_at) VALUES (NULL, 'ANALITICS_ACCESS', 'ANALITICS ACESS', NULL, NULL);`
+* `http://kurs.webfont.laravel2021.local/api/pub/auths/login` // postman + workspace (my workspace) + post + admin@admin.com[email] + admin[password]
+    * `http://kurs.webfont.laravel2021.local/api/admin/analitics` // post ==> analitic lead [dateStart,dateEnd] `DB::CALL countLeads("2023-01-10","2023-01-11")`
