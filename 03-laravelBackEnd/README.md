@@ -209,4 +209,9 @@
 * `http://kurs.webfont.laravel2021.local/auths/login` // admin@admin.com + admin
     * `http://kurs.webfont.laravel2021.local/admin/analitics/export/1/10.01.2023/11.01.2023` // Выгрузит Excel
 
-###### 27 video
+###### 27 video `module analitic leads 03 Add Service Provider through Facade`
+* `php artisan make:provider App/Services/Date/Provider/DateCheckServiceProvider`
+    * `config/app.php` 
+        * DateCheckServiceProvider::class добавил провайдер в laravel
+        * DateService => DateService::class псевдоним фасада
+* `http://kurs.webfont.laravel2021.local/admin/analitics/export/1/10.01.2023/11.01.2023`

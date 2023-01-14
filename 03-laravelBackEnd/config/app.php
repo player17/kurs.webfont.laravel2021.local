@@ -184,6 +184,8 @@ return [
 
         \Maatwebsite\Excel\ExcelServiceProvider::class,
 
+        \App\Services\Date\Provider\DateCheckServiceProvider::class,
+
     ],
 
     /*
@@ -239,6 +241,8 @@ return [
         'Menu'      => Lavary\Menu\Facade::class,
 
         'Excel' => \Maatwebsite\Excel\Facades\Excel::class,
+
+        'DateService' => \App\Services\Date\Facade\DateService::class
 
     ],
 
