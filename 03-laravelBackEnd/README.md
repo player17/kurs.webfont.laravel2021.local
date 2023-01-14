@@ -202,3 +202,11 @@
 * `INSERT INTO permissions (id, alias, title, created_at, updated_at) VALUES (NULL, 'ANALITICS_ACCESS', 'ANALITICS ACESS', NULL, NULL);`
 * `http://kurs.webfont.laravel2021.local/api/pub/auths/login` // postman + workspace (my workspace) + post + admin@admin.com[email] + admin[password]
     * `http://kurs.webfont.laravel2021.local/api/admin/analitics` // post ==> analitic lead [dateStart,dateEnd] `DB::CALL countLeads("2023-01-10","2023-01-11")`
+
+###### 26 video `module analitic leads 02 Excel imp`
+* `composer require maatwebsite/excel`
+* `php artisan make:export App/Modules/Admin/Analitics/Export/LeadsExport`
+* `http://kurs.webfont.laravel2021.local/auths/login` // admin@admin.com + admin
+    * `http://kurs.webfont.laravel2021.local/admin/analitics/export/1/10.01.2023/11.01.2023` // Выгрузит Excel
+
+###### 27 video
