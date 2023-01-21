@@ -21,6 +21,8 @@ return [
             'Menu',
             'Dashboard',
             'User',
+            'Task',
+            'TaskComment',
         ],
 
         'Pub' => [

@@ -18,14 +18,6 @@ trait UserLeadsTrait
         return $this->hasMany(Lead::class);
     }
 
-    public function tasks() {
-        //return $this->hasMany(Lead::class);
-    }
-
-    public function responsibleTasks() {
-        //return $this->hasMany(Lead::class);
-    }
-
     public function comments() {
         return $this->hasMany(LeadComment::class);
     }

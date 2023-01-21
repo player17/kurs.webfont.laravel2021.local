@@ -3,7 +3,7 @@
 namespace App\Modules\Admin\LeadComment\Controllers\Api;
 
 use App\Modules\Admin\LeadComment\Models\LeadComment;
-use App\Modules\Admin\LeadComment\Requests\LeadCommentRequest;
+use App\Modules\Admin\LeadComment\Requests\TaskCommentRequest;
 use App\Modules\Admin\LeadComment\Services\LeadCommentService;
 use App\Services\Response\ResponseServise;
 use Illuminate\Http\Request;
@@ -50,7 +50,7 @@ class LeadCommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(LeadCommentRequest $request)
+    public function store(TaskCommentRequest $request)
     {
         //
         $this->authorize('create', LeadComment::class);

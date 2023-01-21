@@ -215,3 +215,21 @@
         * DateCheckServiceProvider::class добавил провайдер в laravel
         * DateService => DateService::class псевдоним фасада
 * `http://kurs.webfont.laravel2021.local/admin/analitics/export/1/10.01.2023/11.01.2023`
+
+###### 28 video `module and comment`
+* `php artisan migrate --path=App/Modules/Admin/Task/Migrations`
+* `php artisan migrate --path=App/Modules/Admin/TaskComment/Migrations`
+* `INSERT INTO permissions (id, alias, title, created_at, updated_at) VALUES (NULL, 'TASKS_CREATE', 'TASKS CREATE', NULL, NULL);`
+* `INSERT INTO permissions (id, alias, title, created_at, updated_at) VALUES
+(13, 'TASKS_EDIT', 'TASKS EDIT', NULL, NULL),
+(14, 'TASKS_COMMENT_VIEW', 'TASKS COMMENT VIEW', NULL, NULL),
+(15, 'TASKS_COMMENT_CREATE', 'TASKS COMMENT CREATE', NULL, NULL),
+(16, 'TASKS_COMMENT_EDIT', 'TASKS COMMENT EDIT', NULL, NULL);`
+* `INSERT INTO tasks (id, phone, link, source_id, unit_id, user_id, responsible_id, status_id, created_at, updated_at) VALUES
+  (1, NULL, 'http://gogole.com', 1, 1, 1, 1, 1, '2021-01-31 06:34:15', '2021-01-31 06:34:15'),
+  (2, NULL, 'http://gogole.com', 1, 1, 1, 1, 1, '2021-01-31 06:35:12', '2021-01-31 06:35:12'),
+  (3, NULL, 'http://gogole.com', 1, 1, 1, 1, 3, '2021-01-27 06:35:37', '2021-01-28 07:02:49'),
+  (4, NULL, 'http://gogole1.com', 1, 1, 1, 1, 3, '2021-01-31 08:19:49', '2021-01-31 08:26:04');`
+* `http://kurs.webfont.laravel2021.local/api/pub/auths/login` // postman + workspace (my workspace) + post + admin@admin.com[email] + admin[password]
+    * `http://kurs.webfont.laravel2021.local/api/admin/tasks` // get ==> analitic lead [dateStart,dateEnd]
+    * `http://kurs.webfont.laravel2021.local/api/admin/tasks/archive/index` // get ==> analitic lead [dateStart,dateEnd]

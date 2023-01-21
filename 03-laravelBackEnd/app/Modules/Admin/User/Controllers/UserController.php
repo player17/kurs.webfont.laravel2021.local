@@ -2,12 +2,13 @@
 
 namespace App\Modules\Admin\User\Controllers;
 
+use App\Modules\Admin\Dashboard\Classes\Base;
 use App\Modules\Admin\User\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class UserController extends Controller
+class UserController extends Base
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +17,20 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
-        dump(Auth::user());
+        $users = User::paginate(config('settings.pagination'))->appends(request()->input());
+        /** @var String $title */
+        $this->title = __("Users page");
+
+        /** @var String $content */
+        $this->content = view('Admin::User.index')
+            ->with([
+                'items' => $users,
+                'title' => $this->title,
+            ])->render();
+
+        //render output
+        return $this->renderOutput();
+
     }
 
     /**

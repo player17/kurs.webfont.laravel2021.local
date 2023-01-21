@@ -11,6 +11,10 @@ use App\Modules\Admin\Role\Models\Role;
 use App\Modules\Admin\Role\Policies\RolePolicy;
 use App\Modules\Admin\Sources\Models\Source;
 use App\Modules\Admin\Sources\Policies\SourcePolicy;
+use App\Modules\Admin\Task\Models\Task;
+use App\Modules\Admin\Task\Policies\TaskPolicy;
+use App\Modules\Admin\TaskComment\Models\TaskComment;
+use App\Modules\Admin\TaskComment\Policies\TaskCommentPolicy;
 use App\Modules\Admin\User\Policies\UserPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
@@ -28,6 +32,8 @@ class AuthServiceProvider extends ServiceProvider
          Source::class => SourcePolicy::class,
          Lead::class => LeadPolicy::class,
          LeadComment::class => LeadCommentPolicy::class,
+         Task::class => TaskPolicy::class,
+         TaskComment::class => TaskCommentPolicy::class
     ];
 
     /**
