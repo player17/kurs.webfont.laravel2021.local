@@ -233,3 +233,6 @@
 * `http://kurs.webfont.laravel2021.local/api/pub/auths/login` // postman + workspace (my workspace) + post + admin@admin.com[email] + admin[password]
     * `http://kurs.webfont.laravel2021.local/api/admin/tasks` // get ==> analitic lead [dateStart,dateEnd]
     * `http://kurs.webfont.laravel2021.local/api/admin/tasks/archive/index` // get ==> analitic lead [dateStart,dateEnd]
+
+###### 29 video `CRUD users in admin panel`
+* `php artisan route:list`
