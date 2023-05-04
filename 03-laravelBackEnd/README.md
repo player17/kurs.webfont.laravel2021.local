@@ -236,3 +236,12 @@
 
 ###### 29 video `CRUD users in admin panel`
 * `php artisan route:list`
+    * `php artisan cache:clear`
+    * `php artisan config:clear`
+    * `php artisan route:clear`
+    * `php artisan view:clear`
+
+###### 30 video ``
+
+
+
