@@ -151,4 +151,38 @@ class Task extends Model
     {
         return $this->comments()->where('comment_value', '!=', NULL)->orderBy('id','desc')->first();
     }
+
+    public function renderData($load = true) {
+
+        if($load) {
+            $this->load(['source','unit','status']);
+        }
+        return [
+            'id' => $this->id,
+            'phone' => $this->phone,
+            'link' => $this->link,
+            'source_id' => $this->source_id,
+            'unit_id' => $this->unit_id,
+            'status_id' => $this->status_id,
+            'created_at' => $this->created_at->toDateTimeString(),
+            'lastComment' =>  isset($this->lastComment()->comment_value) ? $this->lastComment()->comment_value : ($this->comments->first()->text ?? ""),
+            'created_at_time' => $this->created_at->timestamp,
+            'source' => [
+                'id' => $this->source->id,
+                'title' => $this->source->title,
+            ],
+            'unit' => [
+                'id' => $this->unit->id,
+                'title' => $this->unit->title,
+            ],
+            'status' => [
+                'id' => $this->status->id,
+                'title' => $this->status->title_ru,
+            ],
+            'author' => $this->user->firstname,
+            'responsible' => $this->responsibleUser->firstname,
+            'responsible_id' => $this->responsible_id,
+            'user_id' => $this->user_id,
+        ];
+    }
 }

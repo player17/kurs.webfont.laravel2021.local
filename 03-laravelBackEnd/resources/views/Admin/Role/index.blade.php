@@ -1,6 +1,6 @@
 <!-- Page header -->
 <section class="content-header">
-    <h1>{{$title}}</h1>
+    <h1>Roles</h1>
     <a href="{{route('roles.create')}}" class="btn btn-success">{{ __('Create') }}</a>
 
 </section>
@@ -29,17 +29,19 @@
                             <td>{{$role->title}}</td>
                             <td>{{$role->alias}}</td>
                             <td>
-                                <a href="{{route('roles.edit',['role'=>$role->id])}}"
-                                   class="btn btn-primary btn-labeled">{{ __('Edit') }}
-                                </a>
+                                <div class="row">
+                                    <a href="{{route('roles.edit',['role'=>$role->id])}}"
+                                       class="btn btn-primary btn-labeled">{{ __('Edit') }}
+                                    </a>
+&nbsp;
 
-
-                                <form method="post"  action="{{route('roles.delete',['role'=>$role->id])}}">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button  type="submit" class="btn btn-danger">{{ __('Delete') }}
-                                    </button>
-                                </form>
+                                    <form method="post"  action="{{route('roles.delete',['role'=>$role->id])}}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button  type="submit" class="btn btn-danger">{{ __('Delete') }}
+                                        </button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     @endforeach

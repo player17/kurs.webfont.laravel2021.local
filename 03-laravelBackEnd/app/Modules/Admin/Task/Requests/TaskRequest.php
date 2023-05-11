@@ -25,7 +25,6 @@ class TaskRequest extends ApiRequest
     public function rules()
     {
         return [
-            'text'=>'string|required',
             'responsible_id'=>'required',
         ];
     }

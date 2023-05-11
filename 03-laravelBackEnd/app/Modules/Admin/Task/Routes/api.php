@@ -8,4 +8,6 @@ Route::group(['prefix' => 'tasks', 'middleware' => ['auth:api']], function () {
 
     Route::get('/archive/index', 'Api\TasksController@archive')->name('tasks.archive.index');
 
+    Route::get('/history/{task}', 'Api\TasksController@comments')->name('api.leads.comments');
+
 });

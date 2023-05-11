@@ -66,7 +66,7 @@ class LeadController extends Controller
         $lead = $this->service->store($request, Auth::user());
 
         return ResponseServise::sendJsonResponse(true, 200, [],[
-            'item' => $lead
+            'item' => $lead->renderData()
         ]);
 
 
@@ -111,7 +111,7 @@ class LeadController extends Controller
         $lead = $this->service->update($request, Auth::user(), $lead);
 
         return ResponseServise::sendJsonResponse(true, 200, [],[
-            'item' => $lead
+            'item' => $lead->renderData()
         ]);
 
     }
@@ -161,9 +161,30 @@ class LeadController extends Controller
         $lead = $this->service->updateQuality($request, $lead);
 
         return ResponseServise::sendJsonResponse(true, 200, [],[
-            'item' => $lead
+            'item' => $lead->renderData()
         ]);
 
+    }
+
+    public function getAddSaleCount() {
+        $count = $this->service->getAddSaleCount();
+        return ResponseServise::sendJsonResponse(true, 200, [],[
+            'number' => $count
+        ]);
+
+    }
+
+    public function comments(Lead $lead)
+    {
+        $this->authorize('view', Lead::class);
+
+        return ResponseServise::sendJsonResponse(true, 200, [],[
+            'items' => $lead->comments->transform(function ($item) {
+                $item->load('status', 'user');
+                $item->created_at_r = $item->created_at->toDateTimeString();
+                return $item;
+            })->toArray()
+        ]);
     }
 
 }

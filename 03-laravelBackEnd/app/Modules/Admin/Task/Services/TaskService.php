@@ -31,9 +31,10 @@ class TaskService
         $resultTasks = [];
         $statuses->each(function ($item, $key) use (&$resultTasks, $tasks) {
             $collection = $tasks->where('status_id', $item->id);
-            $resultTasks[$item->title] = $collection->map(function($elem) {
-                return $elem;
-            });
+
+            $resultTasks[$item->title] = array_values($collection->map(function($elem) {
+                return $elem->renderData();
+            })->toArray());
         });
 
         //send response
@@ -57,14 +58,16 @@ class TaskService
 
         $this->addTasksComments($task, $user, $status, $request);
 
-        return $task;
+        return $task->renderData();
     }
 
     public function archive()
     {
         /** @var Collection $tasks */
         $tasks = (new Task())->getArchives(Auth::user());
-        return $tasks;
+        return (collect($tasks->items())->transform(function($item) {
+            return $item->renderData(false);
+        }));
     }
 
     private function addTasksComments($task, $user, $status, $request)

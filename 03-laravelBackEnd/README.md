@@ -5,8 +5,16 @@
 * `.gitignore`
 * `.env`
 
+## Откат комитов
+* `git reset`
+* `git checkout .`
+* `git clean -fdx` // -x удалит все неотслеживаемые файлы
+
+
 ## Мои комменты
 ###### 02 video `Инициализация`
+* `composer self-update`
+* `composer install`
 * `composer update`
 * `php artisan migrate`
 * `php artisan passport:install`
@@ -241,7 +249,9 @@
     * `php artisan route:clear`
     * `php artisan view:clear`
 
-###### 30 video ``
+###### 30 video `Exception`
+* `Exceptions/Handler.php` // Standard Exception
+  * `http://kurs.webfont.laravel2021.local/api/admin/tasks_comments` // post[task_id,text,status_id,responsible_id]
 
 
 

@@ -35,13 +35,14 @@ class TasksCommentsController extends Controller
      */
     public function store(TaskRequest $request)
     {
+
         //check access
         $this->authorize('edit', TaskComment::class);
 
         $task = $this->service->store($request, Auth::user());
 
         return ResponseServise::sendJsonResponse(true, 200, [],[
-            'item' => $task
+            'item' => $task->renderData()
         ]);
 
     }

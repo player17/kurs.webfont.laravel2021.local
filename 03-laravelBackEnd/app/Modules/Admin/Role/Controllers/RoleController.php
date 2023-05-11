@@ -55,7 +55,7 @@ class RoleController extends Base
         $this->authorize('create', Role::class);
 
 
-        $this->title = "Title Role create";
+        $this->title = "Roles";
 
         $this->content = view('Admin::Role.create')->
         with([
@@ -101,7 +101,7 @@ class RoleController extends Base
     {
         $this->authorize('edit', Role::class);
 
-        $this->title = "Title Role edit";
+        $this->title = "Roles";
 
         $this->content = view('Admin::Role.edit')->
         with([

@@ -23,10 +23,13 @@ return [
             'User',
             'Task',
             'TaskComment',
+            'Unit',
+            'Status'
         ],
 
         'Pub' => [
-            'Auth'
+            'Auth',
+            'Analitics',
         ],
     ]
 ];

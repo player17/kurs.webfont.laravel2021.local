@@ -12,4 +12,7 @@ Route::group(['prefix' => 'leads', 'middleware' => []], function () {
     Route::post('/create/check', 'Api\LeadController@checkExist')->name('api.leads.check');
     Route::put('/update/quality/{lead}', 'Api\LeadController@updateQuality')->name('api.leads.update.quality');
 
+    Route::get('/addSale/count', 'Api\LeadController@getAddSaleCount')->name('api.leads.addSale.count');
+
+    Route::get('/history/{lead}', 'Api\LeadController@comments')->name('api.leads.comments');
 });

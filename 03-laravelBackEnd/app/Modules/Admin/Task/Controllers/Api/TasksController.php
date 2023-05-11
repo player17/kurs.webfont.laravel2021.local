@@ -90,9 +90,22 @@ class TasksController extends Controller
         $this->authorize('view', Task::class);
         //
         return ResponseServise::sendJsonResponse(true, 200, [],[
-            'item' => $task
+            'item' => $task->renderData()
         ]);
 
+    }
+
+    public function comments(Task $task)
+    {
+        $this->authorize('view', Task::class);
+
+        return ResponseServise::sendJsonResponse(true, 200, [],[
+            'items' => $task->comments->transform(function ($item) {
+                $item->load('status', 'user');
+                $item->created_at_r = $item->created_at->toDateTimeString();
+                return $item;
+            })->toArray()
+        ]);
     }
 
 }

@@ -11,8 +11,5 @@ use Excel;
 
 class AnaliticsController extends Controller
 {
-    public function export(User $user, $dateStart, $dateEnd) {
-        $export = new LeadsExport($user, $dateStart, $dateEnd);
-        return Excel::download($export,'leads.xlsx');
-    }
+
 }
